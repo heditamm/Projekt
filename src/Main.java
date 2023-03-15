@@ -32,14 +32,14 @@ public class Main {
             if (tegevus.equalsIgnoreCase("V")) {
                 testKasutaja.väljavõtt();
             }
-        /*if (tegevus.equalsIgnoreCase("Ü")){
-            testKasutaja;
-        }*/
+        if (tegevus.equalsIgnoreCase("Ü")) {
+            testKasutaja.ülekanne();
+        }
             if (tegevus.equalsIgnoreCase("I")){
                 testKasutaja.investeerimine();
             }
             if (tegevus.equalsIgnoreCase("Q")){
-                System.out.println("Head aega!");
+                System.out.println("Head aega " +testKasutaja.getKontonimi( ) + "!");
                 break;
 
             }
