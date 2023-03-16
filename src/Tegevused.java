@@ -4,9 +4,12 @@ public class Tegevused {
     private String kontonimi;
     private double kontojääk;
 
-    public Tegevused(String kontonimi, double kontojääk) {
+    private int parool;
+
+    public Tegevused(String kontonimi, double kontojääk, int parool) {
         this.kontonimi = kontonimi;
         this.kontojääk = kontojääk;
+        this.parool = parool;
     }
 
     public String getKontonimi() {
@@ -17,9 +20,22 @@ public class Tegevused {
         return kontojääk;
     }
 
+    public int getParool() {
+        return parool;
+    }
+
+    public void setParool(int parool) {
+        this.parool = parool;
+    }
+
     // [j] vaata kontojääki
     String vaataJääki() {//saad vaadata kontojääki
         return "Teie konto jääk on: " + kontojääk + " EUR.";
+    }
+
+    // [p] vaata parooli
+    String vaataParooli() {//saad vaadata kontojääki
+        return "Teie konto parool on: " + getParool();
     }
 
     // [s] sularaha sissemaks
@@ -43,7 +59,6 @@ public class Tegevused {
 
         if ((kontojääk - kogus) < 0) {
             System.out.println("Kontol pole piisavalt vahendeid, et summat välja võtta.");
-            System.out.println("Hetkene kontojääk on: " + kontojääk + " EUR.");
         } else {
             kontojääk -= kogus;
             System.out.println("Sularaha väljavõtt " + kogus + " EUR.");
@@ -73,7 +88,6 @@ public class Tegevused {
 
         }
     }
-
 
     // [i] sisaldab math randomit
     void investeerimine() {
