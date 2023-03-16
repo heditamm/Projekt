@@ -21,16 +21,6 @@ public class Main {
             }
         }
 
-        /* PANEB PAROOLI VALESTI SS EI SAA JÄTKATA NT
-        int parool= testKasutaja.getParool();
-        Scanner sisestatudParool = new Scanner(System.in);
-        if (sisestatudParool != parool){
-            System.out.println("Vale parool! Palun proovige uuesti.");
-        }else{
-
-        }
-         */
-
         String tegevus;
         Scanner tegu = new Scanner(System.in);
 
