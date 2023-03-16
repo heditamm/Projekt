@@ -1,24 +1,20 @@
 import java.util.Scanner;
 
 public class Tegevused {
-    private String kontonimi;
-    private double kontojääk;
-    private int kontonumber; //ei oma veel kasutust kuskil
+    private Klient klient;
     private int parool;
 
-    public Tegevused(String kontonimi, double kontojääk, int parool, int kontonumber) {
-        this.kontonimi = kontonimi;
-        this.kontojääk = kontojääk;
+    public Tegevused(Klient klient, int parool) {
+        this.klient = klient;
         this.parool = parool;
-        this.kontonumber=kontonumber;
     }
 
     public String getKontonimi() {
-        return kontonimi;
+        return klient.getKliendiNimi();
     }
 
     public double getKontojääk() {
-        return kontojääk;
+        return klient.getKontojääk();
     }
 
     public int getParool() {
@@ -29,25 +25,25 @@ public class Tegevused {
         this.parool = parool;
     }
 
+
     // [j] vaata kontojääki
     String vaataJääki() {//saad vaadata kontojääki
-        return "Teie konto jääk on: " + getKontojääk() + " EUR.";
+        return "Teie konto jääk on: " + klient.getKontojääk() + " EUR.";
     }
 
     // [p] vaata parooli
-    String vaataParooli() {//saad vaadata kontojääki
-        return "Teie konto parool on: " + getParool();
+    String vaataParooli() {//saad vaadata oma parooli
+        return "Teie konto parool on: " + parool;
     }
 
     // [s] sularaha sissemaks
-    void sissemaks() {//kogus mida soovid kontole juurde panna pangaautomaadist
+    void sissemaks() {//kogus mida soovid kontole juurde lisada
         int kogus;
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisestage summa, mida soovite juurde kontole lisada: ");
         kogus = sc.nextInt();
-
-        kontojääk += kogus;
+        klient.setKontojääk(klient.getKontojääk() + kogus);
         System.out.println(kogus + " EUR sissemakse teostatud ");
     }
 
@@ -58,36 +54,36 @@ public class Tegevused {
         System.out.println("Sisestage summa, mida soovite välja võtta: ");
         kogus = sc.nextInt();
 
-        if ((kontojääk - kogus) < 0) {
+        if ((klient.getKontojääk() - kogus) < 0) {
             System.out.println("Kontol pole piisavalt vahendeid, et summat välja võtta.");
         } else {
-            kontojääk -= kogus;
+            klient.setKontojääk(klient.getKontojääk() - kogus);
             System.out.println("Sularaha väljavõtt " + kogus + " EUR.");
         }
     }
 
     // [ü] ülekanne
     void ülekanne() { //ülekanne kellegi teisele kontole
-        String kelleleÜk;
+        String kelleleÜlekanne;
         double ülekandeKogus;
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisestage kasutajanimi, kellele soovite ülekannet teha: ");
-        kelleleÜk = sc.nextLine();
-        if (kelleleÜk.equals("")) {
-            System.out.println("Sellist kasutajat ei ole olemas!");
-        } else {
+        kelleleÜlekanne = sc.nextLine();
+
+        if (!kelleleÜlekanne.isEmpty()) {
             System.out.println("Sisestage summa, mida soovite üle kanda: ");
             ülekandeKogus = sc.nextDouble();
 
-            if ((kontojääk - ülekandeKogus) < 0) {
+            if ((klient.getKontojääk() - ülekandeKogus) < 0) {
                 System.out.println("Kontol pole piisavalt vahendeid, et summat üle kanda.");
-                System.out.println("Hetkene kontojääk on: " + kontojääk + " EUR.");
+                System.out.println("Hetkene kontojääk on: " + klient.getKontojääk() + " EUR.");
             } else {
-                kontojääk -= ülekandeKogus;
-                System.out.println(ülekandeKogus + " EUR üle kantud kasutajale: " + kelleleÜk);
+                klient.setKontojääk(klient.getKontojääk() - ülekandeKogus);
+                System.out.println(ülekandeKogus + " EUR üle kantud kasutajale: " + kelleleÜlekanne);
             }
-
         }
+        System.out.println("Sellist kasutajat ei ole olemas!");
     }
 
     // [i] investeerimine (sisaldab math randomit)
@@ -115,11 +111,11 @@ public class Tegevused {
             System.out.println("Kui palju soovite investeerida? ");
             summa = scan.nextDouble();
 
-            if ((kontojääk - summa) < 0) {
+            if ((klient.getKontojääk() - summa) < 0) {
                 System.out.println("Pole piisvaid vahendeid, et investeerida.");
-                System.out.println("Hetkene kontojääk on: " + kontojääk + " EUR.");
+                System.out.println("Hetkene kontojääk on: " + klient.getKontojääk() + " EUR.");
             } else {
-                kontojääk -= summa;
+                klient.setKontojääk(klient.getKontojääk() - summa);
                 fond = fond.substring(0, 1).toUpperCase() + fond.substring(1).toLowerCase();
                 System.out.println(fond + " edukalt investeeritud " + summa + " EUR.");
             }
@@ -133,11 +129,11 @@ public class Tegevused {
             System.out.println("Kui palju soovite investeerida?");
             summa = scanner1.nextDouble();
 
-            if ((kontojääk - summa) < 0) {
+            if ((klient.getKontojääk() - summa) < 0) {
                 System.out.println("Pole piisvaid vahendeid, et investeerida.");
-                System.out.println("Hetkene kontojääk on: " + kontojääk + " EUR.");
+                System.out.println("Hetkene kontojääk on: " + klient.getKontojääk() + " EUR.");
             } else {
-                kontojääk -= summa;
+                klient.setKontojääk(klient.getKontojääk() - summa);
                 System.out.println(fondid[indeks] + " edukalt investeeritud " + summa + " EUR.");
             }
         }

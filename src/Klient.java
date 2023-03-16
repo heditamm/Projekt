@@ -1,4 +1,4 @@
-public abstract class Klient {
+public class Klient {
     private int kasutajaTunnus; //nagu tavapangas see numbrite kombo
     private String kliendiNimi;
     private double kontojääk;
@@ -9,22 +9,37 @@ public abstract class Klient {
         this.kontojääk = kontojääk;
     }
 
-    public int määrabTaseme(double kontojääk){
-            if (this.kontojääk <1000){
-                return 1;
-            } else if (this.kontojääk <5000) {
-                return 2;
-            } else if (this.kontojääk <9999) {
-                return 3;
-            }
-        return 0;
+    public int getKasutajaTunnus() {
+        return kasutajaTunnus;
     }
 
-    public abstract int määrabtaseme(double kontojääk);
+    public String getKliendiNimi() {
+        return kliendiNimi;
+    }
+
+    public double getKontojääk() {
+        return kontojääk;
+    }
+
+    public void setKasutajaTunnus(int kasutajaTunnus) {
+        this.kasutajaTunnus = kasutajaTunnus;
+    }
+
+    public void setKliendiNimi(String kliendiNimi) {
+        this.kliendiNimi = kliendiNimi;
+    }
+
+    public void setKontojääk(double kontojääk) {
+        this.kontojääk = kontojääk;
+    }
+
+    String tase() {
+        return "Tavakasutaja";
+    }
 
     @Override
     public String toString() {
-        return "Klient: " + kliendiNimi+
-                ", tase: " + määrabTaseme(kontojääk); //alamklassides saaks juurde lisada +", hõbeklient" jne
+        return "Klient: " + kliendiNimi +
+                ", tase: " + tase(); //alamklassides saaks juurde lisada +", hõbeklient" jne
     }
 }
