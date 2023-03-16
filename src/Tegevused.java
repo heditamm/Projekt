@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Tegevused extends Klient{
+public class Tegevused {
     private String kontonimi;
     private double kontojääk;
     private int kontonumber; //ei oma veel kasutust kuskil
