@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Tegevused testKasutaja = new Tegevused("Peeter Meeter", 100.0, 123);
+        Tegevused testKasutaja = new Tegevused("Peeter Meeter", 100.0, 123, 12344567);
         System.out.println("Tere, " + testKasutaja.getKontonimi() + "!");
 
         while (true) {
@@ -55,12 +55,7 @@ public class Main {
                 }
             }
             if (tegevus.equalsIgnoreCase("S")) {
-                String automaat;
-                Scanner koht = new Scanner(System.in);
-                System.out.println("Millises pangaautomaadis soovite sissemakset sooritada? ");
-                automaat = koht.nextLine();
-
-                testKasutaja.sissemaks(automaat);
+                testKasutaja.sissemaks();
                 System.out.println(testKasutaja.vaataJääki());
             }
             if (tegevus.equalsIgnoreCase("V")) {

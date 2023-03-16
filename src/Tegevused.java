@@ -1,15 +1,16 @@
 import java.util.Scanner;
 
-public class Tegevused {
+public class Tegevused{
     private String kontonimi;
     private double kontojääk;
-
+    private int kontonumber; //ei oma veel kasutust kuskil
     private int parool;
 
-    public Tegevused(String kontonimi, double kontojääk, int parool) {
+    public Tegevused(String kontonimi, double kontojääk, int parool, int kontonumber) {
         this.kontonimi = kontonimi;
         this.kontojääk = kontojääk;
         this.parool = parool;
+        this.kontonumber=kontonumber;
     }
 
     public String getKontonimi() {
@@ -30,7 +31,7 @@ public class Tegevused {
 
     // [j] vaata kontojääki
     String vaataJääki() {//saad vaadata kontojääki
-        return "Teie konto jääk on: " + kontojääk + " EUR.";
+        return "Teie konto jääk on: " + getKontojääk() + " EUR.";
     }
 
     // [p] vaata parooli
@@ -39,7 +40,7 @@ public class Tegevused {
     }
 
     // [s] sularaha sissemaks
-    void sissemaks(String pangaautomaat) {//kogus mida soovid kontole juurde panna pangaautomaadist
+    void sissemaks() {//kogus mida soovid kontole juurde panna pangaautomaadist
         int kogus;
 
         Scanner sc = new Scanner(System.in);
@@ -65,8 +66,8 @@ public class Tegevused {
         }
     }
 
-    // [ü] ülekanne (poolik)
-    void ülekanne() {
+    // [ü] ülekanne
+    void ülekanne() { //ülekanne kellegi teisele kontole
         String kelleleÜk;
         double ülekandeKogus;
         Scanner sc = new Scanner(System.in);
@@ -89,7 +90,7 @@ public class Tegevused {
         }
     }
 
-    // [i] sisaldab math randomit
+    // [i] investeerimine (sisaldab math randomit)
     void investeerimine() {
         String[] fondid = {"Elukestev", "Kogumisfond 10", "Kogumisfond 30", "Kogumisfond 60", "Kogumisfond 100"};
         System.out.println("Valikus olevad fondid on: ");
@@ -141,4 +142,5 @@ public class Tegevused {
             }
         }
     }
+
 }

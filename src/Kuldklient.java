@@ -4,13 +4,6 @@ public class Kuldklient extends Klient{
     public Kuldklient(int kasutajaTunnus, String kliendiNimi, double kontojääk) {
         super(kasutajaTunnus, kliendiNimi, kontojääk);
     }
-
-    @Override
-    public int määrabtaseme(double kontojääk) {
-        return 0;
-    }
-
-    /*
         @Override
         public int määrabtaseme(double kontojääk){
             if (kontojääk <5000){
@@ -23,7 +16,6 @@ public class Kuldklient extends Klient{
             return 0;
         }
 
-     */
     @Override
     public String toString() {
         return super.toString() + " Kuldklient";
