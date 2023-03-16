@@ -4,11 +4,27 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Tegevused testKasutaja = new Tegevused("Peeter Meeter", 100.0, 123);
-        System.out.println("Tere, " + testKasutaja.getKontonimi() + "!" + "\nPalun sisestage oma parool: ");
+        System.out.println("Tere, " + testKasutaja.getKontonimi() + "!");
+
+        while (true) {
+            Scanner paroolScanner = new Scanner(System.in);
+            int sisestatudParool;
+            int parool = testKasutaja.getParool(); //õige parool
+            System.out.println("Palun sisestage oma parool: ");
+            sisestatudParool = paroolScanner.nextInt();
+
+            if (sisestatudParool == parool) {
+                System.out.println("Tere tulemast!");
+                break;
+            } else {
+                System.out.println("Vale parool! Palun proovige uuesti.");
+            }
+        }
+
         /* PANEB PAROOLI VALESTI SS EI SAA JÄTKATA NT
         int parool= testKasutaja.getParool();
         Scanner sisestatudParool = new Scanner(System.in);
-        if (sisestatudParool != parol){
+        if (sisestatudParool != parool){
             System.out.println("Vale parool! Palun proovige uuesti.");
         }else{
 
