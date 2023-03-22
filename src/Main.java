@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class Main {
     static List<Klient> loeFailist(String failinimi) throws FileNotFoundException {
         ArrayList<Klient> kliendid = new ArrayList<>();
@@ -48,13 +47,16 @@ public class Main {
             int sisestatudParool;
             int parool = testTegevus.getParool(); //õige parool
             System.out.println("Palun sisestage oma parool: ");
-            sisestatudParool = paroolScanner.nextInt();
-
-            if (sisestatudParool == parool) {
-                System.out.println("Tere tulemast!");
-                break;
+            if (paroolScanner.hasNextInt()) {
+                sisestatudParool = paroolScanner.nextInt();
+                if (sisestatudParool == parool) {
+                    System.out.println("Tere tulemast!");
+                    break;
+                } else {
+                    System.out.println("Vale parool! Palun proovige uuesti.");
+                }
             } else {
-                System.out.println("Vale parool! Palun proovige uuesti.");
+                System.out.println("Vale parooli formaat! Palun proovige uuesti.");
             }
         }
 

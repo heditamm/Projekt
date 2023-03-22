@@ -13,4 +13,3 @@ public class Kuldklient extends Klient {
         return super.toString();
     }
 }
-

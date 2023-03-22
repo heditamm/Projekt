@@ -21,14 +21,6 @@ public class Klient {
         return kontojääk;
     }
 
-    public void setKasutajaTunnus(int kasutajaTunnus) {
-        this.kasutajaTunnus = kasutajaTunnus;
-    }
-
-    public void setKliendiNimi(String kliendiNimi) {
-        this.kliendiNimi = kliendiNimi;
-    }
-
     public void setKontojääk(double kontojääk) {
         this.kontojääk = kontojääk;
     }

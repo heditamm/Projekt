@@ -25,7 +25,6 @@ public class Tegevused {
         this.parool = parool;
     }
 
-
     // [j] vaata kontojääki
     String vaataJääki() {//saad vaadata kontojääki
         return "Teie konto jääk on: " + klient.getKontojääk() + " EUR.";
@@ -36,44 +35,42 @@ public class Tegevused {
         return "Teie konto parool on: " + parool;
     }
 
+    boolean piisavSumma(double kogus) {//kontrollib, kas on piisavalt raha, et tegevust teha (korduvate kontojääk-kogus<0 asemel saab seda kasutada, ei ole igalepoole seda veel pannud)
+        return !((klient.getKontojääk() - kogus) < 0);
+    }
+
     // [s] sularaha sissemaks
     void sissemaks() {//kogus mida soovid kontole juurde lisada
-        int kogus;
-
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisestage summa, mida soovite juurde kontole lisada: ");
-        kogus = sc.nextInt();
+        int kogus = sc.nextInt();
         klient.setKontojääk(klient.getKontojääk() + kogus);
         System.out.println(kogus + " EUR sissemakse teostatud ");
     }
 
     // [v] sularaha väljavõte
     void väljavõtt() {//sularaha väljavõtt pangaautomaadist
-        int kogus;
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisestage summa, mida soovite välja võtta: ");
-        kogus = sc.nextInt();
+        int kogus = sc.nextInt();
 
-        if ((klient.getKontojääk() - kogus) < 0) {
-            System.out.println("Kontol pole piisavalt vahendeid, et summat välja võtta.");
-        } else {
+        if (piisavSumma(kogus)) {
             klient.setKontojääk(klient.getKontojääk() - kogus);
             System.out.println("Sularaha väljavõtt " + kogus + " EUR.");
+        } else {
+            System.out.println("Kontol pole piisavalt vahendeid, et summat välja võtta.");
         }
     }
 
     // [ü] ülekanne
     void ülekanne() { //ülekanne kellegi teisele kontole
-        String kelleleÜlekanne;
-        double ülekandeKogus;
-
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisestage kasutajanimi, kellele soovite ülekannet teha: ");
-        kelleleÜlekanne = sc.nextLine();
+        String kelleleÜlekanne = sc.nextLine();
 
         if (!kelleleÜlekanne.isEmpty()) {
             System.out.println("Sisestage summa, mida soovite üle kanda: ");
-            ülekandeKogus = sc.nextDouble();
+            double ülekandeKogus = sc.nextDouble();
 
             if ((klient.getKontojääk() - ülekandeKogus) < 0) {
                 System.out.println("Kontol pole piisavalt vahendeid, et summat üle kanda.");
@@ -95,21 +92,18 @@ public class Tegevused {
         }
         System.out.println("\n");
 
-        String jahEi;
         Scanner sc = new Scanner(System.in);
         System.out.println("Kas teate millisesse fondi soovite investeerida? ");
-        jahEi = sc.nextLine();
+        String jahEi = sc.nextLine();
 
         if (jahEi.equalsIgnoreCase("Jah")) {
-            String fond;
-            double summa;
             Scanner scanner = new Scanner(System.in);
             System.out.println("Millisesse fondi soovite investeerida? ");
-            fond = scanner.nextLine();
+            String fond = scanner.nextLine();
 
             Scanner scan = new Scanner(System.in);
             System.out.println("Kui palju soovite investeerida? ");
-            summa = scan.nextDouble();
+            double summa = scan.nextDouble();
 
             if ((klient.getKontojääk() - summa) < 0) {
                 System.out.println("Pole piisvaid vahendeid, et investeerida.");
@@ -122,12 +116,11 @@ public class Tegevused {
 
         }
         if (jahEi.equalsIgnoreCase("Ei")) {
-            double summa;
             int indeks = (int) (Math.random() * ((fondid.length)));
             System.out.println("Suvaliselt valitud fond on " + fondid[indeks] + ".");
             Scanner scanner1 = new Scanner(System.in);
             System.out.println("Kui palju soovite investeerida?");
-            summa = scanner1.nextDouble();
+            double summa = scanner1.nextDouble();
 
             if ((klient.getKontojääk() - summa) < 0) {
                 System.out.println("Pole piisvaid vahendeid, et investeerida.");
@@ -138,5 +131,4 @@ public class Tegevused {
             }
         }
     }
-
 }
