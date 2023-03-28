@@ -43,15 +43,20 @@ public class Tegevused {
     void sissemaks() {//kogus mida soovid kontole juurde lisada
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisestage summa, mida soovite juurde kontole lisada: ");
-        int kogus = sc.nextInt();
-        klient.setKontojääk(klient.getKontojääk() + kogus);
-        System.out.println(kogus + " EUR sissemakse teostatud ");
+        try {
+            int kogus = sc.nextInt();
+            klient.setKontojääk(klient.getKontojääk() + kogus);
+            System.out.println(kogus + " EUR sissemakse teostatud ");
+        }catch (Exception e){
+            System.out.println("Vigane summa!");
+        }
     }
 
     // [v] sularaha väljavõte
     void väljavõtt() {//sularaha väljavõtt pangaautomaadist
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisestage summa, mida soovite välja võtta: ");
+        try{
         int kogus = sc.nextInt();
 
         if (piisavSumma(kogus)) {
@@ -59,6 +64,8 @@ public class Tegevused {
             System.out.println("Sularaha väljavõtt " + kogus + " EUR.");
         } else {
             System.out.println("Kontol pole piisavalt vahendeid, et summat välja võtta.");
+        }}catch (Exception e){
+            System.out.println("Vigane summa!");
         }
     }
 
@@ -66,6 +73,7 @@ public class Tegevused {
     void ülekanne() { //ülekanne kellegi teisele kontole
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisestage kasutajanimi, kellele soovite ülekannet teha: ");
+        try{
         String kelleleÜlekanne = sc.nextLine();
 
         if (!kelleleÜlekanne.isEmpty()) {
@@ -80,7 +88,9 @@ public class Tegevused {
                 System.out.println(ülekandeKogus + " EUR üle kantud kasutajale: " + kelleleÜlekanne);
             }
         }
-        System.out.println("Sellist kasutajat ei ole olemas!");
+        }catch (Exception e){
+            System.out.println("Midagi läks valesti! ");
+        }
     }
 
     // [i] investeerimine (sisaldab math randomit)

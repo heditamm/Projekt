@@ -88,9 +88,13 @@ public class Main {
                     System.out.println("Sisestage uus parool: ");
                     int tegevusParoolMuutmine;
                     Scanner teguParoolMuutmine = new Scanner(System.in);
-                    tegevusParoolMuutmine = teguParoolMuutmine.nextInt();
-                    testTegevus.setParool(tegevusParoolMuutmine);
-                    System.out.println("Teie uus parool on: " + testTegevus.getParool());
+                    try {
+                        tegevusParoolMuutmine = teguParoolMuutmine.nextInt();
+                        testTegevus.setParool(tegevusParoolMuutmine);
+                        System.out.println("Teie uus parool on: " + testTegevus.getParool());
+                    } catch (Exception e) {
+                        System.out.println("Paroolis peavad olema ainult numbrid! ");
+                    }
                 }
             }
             if (tegevus.equalsIgnoreCase("S")) {
