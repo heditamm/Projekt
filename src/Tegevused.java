@@ -44,7 +44,7 @@ public class Tegevused {
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisestage summa, mida soovite juurde kontole lisada: ");
         try {
-            int kogus = sc.nextInt();
+            double kogus = sc.nextDouble();
             klient.setKontojääk(klient.getKontojääk() + kogus);
             System.out.println(kogus + " EUR sissemakse teostatud ");
         }catch (Exception e){
@@ -57,7 +57,7 @@ public class Tegevused {
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisestage summa, mida soovite välja võtta: ");
         try{
-        int kogus = sc.nextInt();
+        double kogus = sc.nextDouble();
 
         if (piisavSumma(kogus)) {
             klient.setKontojääk(klient.getKontojääk() - kogus);
@@ -89,7 +89,7 @@ public class Tegevused {
             }
         }
         }catch (Exception e){
-            System.out.println("Midagi läks valesti! ");
+            System.out.println("Midagi läks valesti! Kontrollige üle kasutajanimi ja summa! ");
         }
     }
 
@@ -103,7 +103,7 @@ public class Tegevused {
         System.out.println("\n");
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Kas teate millisesse fondi soovite investeerida? ");
+        System.out.println("Kas teate millisesse fondi soovite investeerida? [Ei/Jah]");
         String jahEi = sc.nextLine();
 
         if (jahEi.equalsIgnoreCase("Jah")) {
@@ -113,6 +113,7 @@ public class Tegevused {
 
             Scanner scan = new Scanner(System.in);
             System.out.println("Kui palju soovite investeerida? ");
+            try{
             double summa = scan.nextDouble();
 
             if ((klient.getKontojääk() - summa) < 0) {
@@ -122,12 +123,15 @@ public class Tegevused {
                 klient.setKontojääk(klient.getKontojääk() - summa);
                 fond = fond.substring(0, 1).toUpperCase() + fond.substring(1).toLowerCase();
                 System.out.println(fond + " edukalt investeeritud " + summa + " EUR.");
+            }}catch (Exception e){
+                System.out.println("Vigane summa palun proovige uuesti!");
             }
 
         }
         if (jahEi.equalsIgnoreCase("Ei")) {
             int indeks = (int) (Math.random() * ((fondid.length)));
             System.out.println("Suvaliselt valitud fond on " + fondid[indeks] + ".");
+            try{
             Scanner scanner1 = new Scanner(System.in);
             System.out.println("Kui palju soovite investeerida?");
             double summa = scanner1.nextDouble();
@@ -138,6 +142,8 @@ public class Tegevused {
             } else {
                 klient.setKontojääk(klient.getKontojääk() - summa);
                 System.out.println(fondid[indeks] + " edukalt investeeritud " + summa + " EUR.");
+            }}catch (Exception e){
+                System.out.println("Vigane summa palun proovige uuesti!");
             }
         }
     }

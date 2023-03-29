@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -36,11 +37,20 @@ public class Main {
         //failist kasutajad
         System.out.println(loeFailist("src/Kasutajad.txt"));
 
+        //proov
+            System.out.println("Sisestage oma nimi: ");
+            Scanner tunnus = new Scanner(System.in);
+            String sisestatudKasutajatunnus = tunnus.nextLine();
+
+            System.out.println(sisestatudKasutajatunnus);
+
+
         //testid
         Klient testKlient = new Klient(456733456, "Peeter A", 12345);
         Tegevused testTegevus = new Tegevused(testKlient, 123);
 
         System.out.println("Tere, " + testTegevus.getKontonimi() + "!");
+
 
         while (true) {
             Scanner paroolScanner = new Scanner(System.in);
