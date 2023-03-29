@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Tegevused {
@@ -96,9 +97,17 @@ public class Tegevused {
     // [i] investeerimine (sisaldab math randomit)
     void investeerimine() {
         String[] fondid = {"Elukestev", "Kogumisfond 10", "Kogumisfond 30", "Kogumisfond 60", "Kogumisfond 100"};
+        String[] fondidKuldkliend = {"Rikkur", "Kogumisfond 5000","Kogumisfond Lill"};
         System.out.println("Valikus olevad fondid on: ");
-        for (String fond : fondid) {
-            System.out.print(fond + "; ");
+        if (Objects.equals(klient.tase(), "Klient")) {
+            for (String fond : fondid) {
+                System.out.print(fond + "; ");
+            }
+        } else {
+            for (String fond : fondidKuldkliend) {
+                System.out.print(fond + "; ");
+            }
+
         }
         System.out.println("\n");
 
