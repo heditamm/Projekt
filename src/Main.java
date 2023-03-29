@@ -1,12 +1,13 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     static List<Klient> loeFailist(String failinimi) throws FileNotFoundException {
+        //loeb failist sisse kliendid: täisnimi, parool, kontojääk ning lisab vastavasse klienditasemele
+        //paroolide turvalisemat hoiustamist saab 2. rühmatöös katsetada
         ArrayList<Klient> kliendid = new ArrayList<>();
 
         File file = new File(failinimi);
@@ -22,10 +23,10 @@ public class Main {
             double summa = Double.parseDouble(ajutineOsad[3]);
 
             if (summa > 5000) {
-                Kuldklient ajutine = new Kuldklient(kontonumber, kliendiNimi, summa);
+                Kuldklient ajutine = new Kuldklient(kontonumber, kliendiNimi, summa, parool);
                 kliendid.add(ajutine);
             } else {
-                Klient ajutineTava = new Klient(kontonumber, kliendiNimi, summa);
+                Klient ajutineTava = new Klient(kontonumber, kliendiNimi, summa, parool);
                 kliendid.add(ajutineTava);
             }
 
@@ -35,27 +36,28 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         //failist kasutajad
-        System.out.println(loeFailist("src/Kasutajad.txt"));
+        List<Klient> kliendid = loeFailist("src/Kasutajad.txt");
 
-        //proov
-            System.out.println("Sisestage oma nimi: ");
-            Scanner tunnus = new Scanner(System.in);
-            String sisestatudKasutajatunnus = tunnus.nextLine();
+        System.out.println("Sisestage oma nimi: ");
+        Scanner nimi = new Scanner(System.in);
+        String sisestatudKasutajaNimi = nimi.nextLine();
+        Klient sisenevKlient;
+        Tegevused tegevKlient = null;
 
-            System.out.println(sisestatudKasutajatunnus);
-
-
-        //testid
-        Klient testKlient = new Klient(456733456, "Peeter A", 12345);
-        Tegevused testTegevus = new Tegevused(testKlient, 123);
-
-        System.out.println("Tere, " + testTegevus.getKontonimi() + "!");
-
+        //loopina vaatab läbi, kas on sellise nimega klienti
+        for (Klient klient : kliendid) {
+            if (klient.getKliendiNimi().equals(sisestatudKasutajaNimi)) {
+                System.out.println("Tere, " + klient.getKliendiNimi() + "!");
+                sisenevKlient = klient;
+                tegevKlient = new Tegevused(klient, klient.getParool());
+                break;
+            }
+        }
 
         while (true) {
             Scanner paroolScanner = new Scanner(System.in);
             int sisestatudParool;
-            int parool = testTegevus.getParool(); //õige parool
+            int parool = tegevKlient.getParool(); //õige parool
             System.out.println("Palun sisestage oma parool: ");
             if (paroolScanner.hasNextInt()) {
                 sisestatudParool = paroolScanner.nextInt();
@@ -77,7 +79,7 @@ public class Main {
             System.out.println("""
                     Millist tegevust soovite teha?\s
                      [J] Vaata kontojääki
-                     [P] Vaata konto parooli (poolik)
+                     [P] Vaata konto parooli
                      [S] Sularaha sissemaks
                      [V] Sularaha väljavõte
                      [Ü] Ülekanne
@@ -85,44 +87,44 @@ public class Main {
                      [Q] Lõpeta tegevus""");
             tegevus = tegu.nextLine();
             if (tegevus.equalsIgnoreCase("J")) {
-                System.out.println(testTegevus.vaataJääki());
+                System.out.println(tegevKlient.vaataJääki());
             }
             if (tegevus.equalsIgnoreCase("P")) {//poolik
-                System.out.println(testTegevus.vaataParooli() + "\nKas soovite parooli muuta?" +
+                System.out.println(tegevKlient.vaataParooli() + "\nKas soovite parooli muuta?" +
                         "\n[J] Jah\n" +
                         "[E] Ei\n");
                 String tegevusParool;
                 Scanner teguParool = new Scanner(System.in);
                 tegevusParool = teguParool.nextLine();
-                if (tegevusParool.equalsIgnoreCase("J")) {
+                if (tegevusParool.equalsIgnoreCase("J")) {//ei muuda tekstifailis ja kliendi klassis ära parooli, aga tegevustes muudab ja see põhiline(2. rühmatöös parandatav???)
                     System.out.println("Sisestage uus parool: ");
                     int tegevusParoolMuutmine;
                     Scanner teguParoolMuutmine = new Scanner(System.in);
                     try {
                         tegevusParoolMuutmine = teguParoolMuutmine.nextInt();
-                        testTegevus.setParool(tegevusParoolMuutmine);
-                        System.out.println("Teie uus parool on: " + testTegevus.getParool());
+                        tegevKlient.setParool(tegevusParoolMuutmine);
+                        System.out.println("Teie uus parool on: " + tegevKlient.getParool());
                     } catch (Exception e) {
                         System.out.println("Paroolis peavad olema ainult numbrid! ");
                     }
                 }
             }
             if (tegevus.equalsIgnoreCase("S")) {
-                testTegevus.sissemaks();
-                System.out.println(testTegevus.vaataJääki());
+                tegevKlient.sissemaks();
+                System.out.println(tegevKlient.vaataJääki());
             }
             if (tegevus.equalsIgnoreCase("V")) {
-                testTegevus.väljavõtt();
-                System.out.println(testTegevus.vaataJääki());
+                tegevKlient.väljavõtt();
+                System.out.println(tegevKlient.vaataJääki());
             }
             if (tegevus.equalsIgnoreCase("Ü")) {
-                testTegevus.ülekanne();
+                tegevKlient.ülekanne();
             }
             if (tegevus.equalsIgnoreCase("I")) {
-                testTegevus.investeerimine();
+                tegevKlient.investeerimine();
             }
             if (tegevus.equalsIgnoreCase("Q")) {
-                System.out.println("Head aega " + testTegevus.getKontonimi() + "!");
+                System.out.println("Head aega " + tegevKlient.getKontonimi() + "!");
                 break;
 
             }
