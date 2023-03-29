@@ -10,6 +10,10 @@ public class Tegevused {
         this.parool = parool;
     }
 
+    public String getTase() {
+        return klient.tase();
+    }
+
     public String getKontonimi() {
         return klient.getKliendiNimi();
     }
@@ -48,7 +52,7 @@ public class Tegevused {
             double kogus = sc.nextDouble();
             klient.setKontojääk(klient.getKontojääk() + kogus);
             System.out.println(kogus + " EUR sissemakse teostatud ");
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Vigane summa!");
         }
     }
@@ -57,15 +61,16 @@ public class Tegevused {
     void väljavõtt() {//sularaha väljavõtt pangaautomaadist
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisestage summa, mida soovite välja võtta: ");
-        try{
-        double kogus = sc.nextDouble();
+        try {
+            double kogus = sc.nextDouble();
 
-        if (piisavSumma(kogus)) {
-            klient.setKontojääk(klient.getKontojääk() - kogus);
-            System.out.println("Sularaha väljavõtt " + kogus + " EUR.");
-        } else {
-            System.out.println("Kontol pole piisavalt vahendeid, et summat välja võtta.");
-        }}catch (Exception e){
+            if (piisavSumma(kogus)) {
+                klient.setKontojääk(klient.getKontojääk() - kogus);
+                System.out.println("Sularaha väljavõtt " + kogus + " EUR.");
+            } else {
+                System.out.println("Kontol pole piisavalt vahendeid, et summat välja võtta.");
+            }
+        } catch (Exception e) {
             System.out.println("Vigane summa!");
         }
     }
@@ -74,22 +79,22 @@ public class Tegevused {
     void ülekanne() { //ülekanne kellegi teisele kontole
         Scanner sc = new Scanner(System.in);
         System.out.println("Sisestage kasutajanimi, kellele soovite ülekannet teha: ");
-        try{
-        String kelleleÜlekanne = sc.nextLine();
+        try {
+            String kelleleÜlekanne = sc.nextLine();
 
-        if (!kelleleÜlekanne.isEmpty()) {
-            System.out.println("Sisestage summa, mida soovite üle kanda: ");
-            double ülekandeKogus = sc.nextDouble();
+            if (!kelleleÜlekanne.isEmpty()) {
+                System.out.println("Sisestage summa, mida soovite üle kanda: ");
+                double ülekandeKogus = sc.nextDouble();
 
-            if ((klient.getKontojääk() - ülekandeKogus) < 0) {
-                System.out.println("Kontol pole piisavalt vahendeid, et summat üle kanda.");
-                System.out.println("Hetkene kontojääk on: " + klient.getKontojääk() + " EUR.");
-            } else {
-                klient.setKontojääk(klient.getKontojääk() - ülekandeKogus);
-                System.out.println(ülekandeKogus + " EUR üle kantud kasutajale: " + kelleleÜlekanne);
+                if ((klient.getKontojääk() - ülekandeKogus) < 0) {
+                    System.out.println("Kontol pole piisavalt vahendeid, et summat üle kanda.");
+                    System.out.println("Hetkene kontojääk on: " + klient.getKontojääk() + " EUR.");
+                } else {
+                    klient.setKontojääk(klient.getKontojääk() - ülekandeKogus);
+                    System.out.println(ülekandeKogus + " EUR üle kantud kasutajale: " + kelleleÜlekanne);
+                }
             }
-        }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Midagi läks valesti! Kontrollige üle kasutajanimi ja summa! ");
         }
     }
@@ -97,61 +102,51 @@ public class Tegevused {
     // [i] investeerimine (sisaldab math randomit)
     void investeerimine() {
         String[] fondid = {"Elukestev", "Kogumisfond 10", "Kogumisfond 30", "Kogumisfond 60", "Kogumisfond 100"};
-        String[] fondidKuldkliend = {"Rikkur", "Kogumisfond 5000","Kogumisfond Lill"};
-        System.out.println("Valikus olevad fondid on: ");
-        if (Objects.equals(klient.tase(), "Klient")) {
-            for (String fond : fondid) {
-                System.out.print(fond + "; ");
-            }
-        } else {
-            for (String fond : fondidKuldkliend) {
-                System.out.print(fond + "; ");
-            }
-
-        }
-        System.out.println("\n");
+        String[] fondidKuldklient = {"Rikkur", "Kogumisfond 5000", "Kogumisfond Lill"};
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Kas teate millisesse fondi soovite investeerida? [Ei/Jah]");
+        System.out.println("\n" + "Kas teate millisesse fondi soovite investeerida? [Jah/Ei]");
         String jahEi = sc.nextLine();
 
-        if (jahEi.equalsIgnoreCase("Jah")) {
+        if (jahEi.equalsIgnoreCase("Jah") || jahEi.equalsIgnoreCase("J")){
             Scanner scanner = new Scanner(System.in);
             System.out.println("Millisesse fondi soovite investeerida? ");
             String fond = scanner.nextLine();
 
             Scanner scan = new Scanner(System.in);
             System.out.println("Kui palju soovite investeerida? ");
-            try{
-            double summa = scan.nextDouble();
+            try {
+                double summa = scan.nextDouble();
 
-            if ((klient.getKontojääk() - summa) < 0) {
-                System.out.println("Pole piisvaid vahendeid, et investeerida.");
-                System.out.println("Hetkene kontojääk on: " + klient.getKontojääk() + " EUR.");
-            } else {
-                klient.setKontojääk(klient.getKontojääk() - summa);
-                fond = fond.substring(0, 1).toUpperCase() + fond.substring(1).toLowerCase();
-                System.out.println(fond + " edukalt investeeritud " + summa + " EUR.");
-            }}catch (Exception e){
+                if ((klient.getKontojääk() - summa) < 0) {
+                    System.out.println("Pole piisvaid vahendeid, et investeerida.");
+                    System.out.println("Hetkene kontojääk on: " + klient.getKontojääk() + " EUR.");
+                } else {
+                    klient.setKontojääk(klient.getKontojääk() - summa);
+                    fond = fond.substring(0, 1).toUpperCase() + fond.substring(1).toLowerCase();
+                    System.out.println(fond + " edukalt investeeritud " + summa + " EUR.");
+                }
+            } catch (Exception e) {
                 System.out.println("Vigane summa palun proovige uuesti!");
             }
 
         }
-        if (jahEi.equalsIgnoreCase("Ei")) {
+        if (jahEi.equalsIgnoreCase("Ei") || jahEi.equalsIgnoreCase("E")) {//siin ei ole vahet kas oled tava või kuldklient.
             int indeks = (int) (Math.random() * ((fondid.length)));
             System.out.println("Suvaliselt valitud fond on " + fondid[indeks] + ".");
-            try{
-            Scanner scanner1 = new Scanner(System.in);
-            System.out.println("Kui palju soovite investeerida?");
-            double summa = scanner1.nextDouble();
+            try {
+                Scanner scanner1 = new Scanner(System.in);
+                System.out.println("Kui palju soovite investeerida?");
+                double summa = scanner1.nextDouble();
 
-            if ((klient.getKontojääk() - summa) < 0) {
-                System.out.println("Pole piisvaid vahendeid, et investeerida.");
-                System.out.println("Hetkene kontojääk on: " + klient.getKontojääk() + " EUR.");
-            } else {
-                klient.setKontojääk(klient.getKontojääk() - summa);
-                System.out.println(fondid[indeks] + " edukalt investeeritud " + summa + " EUR.");
-            }}catch (Exception e){
+                if ((klient.getKontojääk() - summa) < 0) {
+                    System.out.println("Pole piisvaid vahendeid, et investeerida.");
+                    System.out.println("Hetkene kontojääk on: " + klient.getKontojääk() + " EUR.");
+                } else {
+                    klient.setKontojääk(klient.getKontojääk() - summa);
+                    System.out.println(fondid[indeks] + " edukalt investeeritud " + summa + " EUR.");
+                }
+            } catch (Exception e) {
                 System.out.println("Vigane summa palun proovige uuesti!");
             }
         }

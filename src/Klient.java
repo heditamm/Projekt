@@ -22,11 +22,13 @@ public class Klient {
     public double getKontojääk() {
         return kontojääk;
     }
-    public int getParool(){
+
+    public int getParool() {
         return parool;
     }
-    public void setParool(int parool){
-        this.parool=parool;
+
+    public void setParool(int parool) {
+        this.parool = parool;
     }
 
     public void setKontojääk(double kontojääk) {

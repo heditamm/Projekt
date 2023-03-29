@@ -57,6 +57,7 @@ public class Main {
         while (true) {
             Scanner paroolScanner = new Scanner(System.in);
             int sisestatudParool;
+            assert tegevKlient != null;
             int parool = tegevKlient.getParool(); //õige parool
             System.out.println("Palun sisestage oma parool: ");
             if (paroolScanner.hasNextInt()) {
@@ -121,12 +122,24 @@ public class Main {
                 tegevKlient.ülekanne();
             }
             if (tegevus.equalsIgnoreCase("I")) {
+                if (tegevKlient.getTase().equals("Tavakasutaja")) {
+                    String[] fondid = {"Elukestev", "Kogumisfond 10", "Kogumisfond 30", "Kogumisfond 60", "Kogumisfond 100"};
+                    System.out.println("Valikus olevad fondid on: ");
+                    for (String fond : fondid) {
+                        System.out.print(fond + "; ");
+                    }
+                }
+                if (tegevKlient.getTase().equals("Kuldklient")) {
+                    String[] fondidKuldklient = {"Rikkur", "Kogumisfond 5000", "Kogumisfond Lill"};
+                    for (String fond : fondidKuldklient) {
+                        System.out.print(fond + "; ");
+                    }
+                }
                 tegevKlient.investeerimine();
             }
             if (tegevus.equalsIgnoreCase("Q")) {
                 System.out.println("Head aega " + tegevKlient.getKontonimi() + "!");
                 break;
-
             }
         }
     }
