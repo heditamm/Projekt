@@ -37,23 +37,23 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         //failist kasutajad
         List<Klient> kliendid = loeFailist("src/Kasutajad.txt");
-
         System.out.println("Sisestage oma nimi: ");
         Scanner nimi = new Scanner(System.in);
         String sisestatudKasutajaNimi = nimi.nextLine();
-        Klient sisenevKlient;
         Tegevused tegevKlient = null;
 
-        //loopina vaatab läbi, kas on sellise nimega klienti peaks panema try catch juurde
-        for (Klient klient : kliendid) {
-            if (klient.getKliendiNimi().equals(sisestatudKasutajaNimi)) {
+        //loopina vaatab läbi, kas on sellise nimega klienti
+        for (Klient klient : kliendid) {try {
+            if (klient.getKliendiNimi().equalsIgnoreCase(sisestatudKasutajaNimi)) {
                 System.out.println("Tere, " + klient.getKliendiNimi() + "!");
-                sisenevKlient = klient;
                 tegevKlient = new Tegevused(klient, klient.getParool());
                 break;
             }
+        }catch (Exception e) {
+            System.out.println("Vale formaat! Palun proovige uuesti.");
         }
-
+        }
+        try {
         while (true) {
             Scanner paroolScanner = new Scanner(System.in);
             int sisestatudParool;
@@ -124,6 +124,8 @@ public class Main {
                 System.out.println("Head aega " + tegevKlient.getKontonimi() + "!");
                 break;
             }
+        }}catch (Exception e){
+            System.out.println("Vale formaat!");
         }
     }
 }

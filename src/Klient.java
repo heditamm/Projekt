@@ -1,5 +1,5 @@
 public class Klient {
-    private int kasutajaTunnus; //nagu tavapangas see numbrite kombo
+    private int kasutajaTunnus; //nagu tavapangas see numbrite kombo (hetkel veel puudub aga tuleb 2. rühmatöös)
     private String kliendiNimi;
     private double kontojääk;
     private int parool;
@@ -9,10 +9,6 @@ public class Klient {
         this.kliendiNimi = kliendiNimi;
         this.kontojääk = kontojääk;
         this.parool = parool;
-    }
-
-    public int getKasutajaTunnus() {
-        return kasutajaTunnus;
     }
 
     public String getKliendiNimi() {
@@ -42,6 +38,6 @@ public class Klient {
     @Override
     public String toString() {
         return "Klient: " + kliendiNimi +
-                ", tase: " + tase(); //alamklassides saaks juurde lisada +", hõbeklient" jne
+                ", tase: " + tase();
     }
 }
