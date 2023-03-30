@@ -125,7 +125,7 @@ public class Main {
                 break;
             }
         }}catch (Exception e){
-            System.out.println("Vale formaat!");
+            System.out.println("Sellise nimega kontot ei eksisteeri! Turvalisuse nimel palun proovige uuesti!");
         }
     }
 }
