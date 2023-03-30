@@ -44,7 +44,7 @@ public class Main {
         Klient sisenevKlient;
         Tegevused tegevKlient = null;
 
-        //loopina vaatab läbi, kas on sellise nimega klienti
+        //loopina vaatab läbi, kas on sellise nimega klienti peaks panema try catch juurde
         for (Klient klient : kliendid) {
             if (klient.getKliendiNimi().equals(sisestatudKasutajaNimi)) {
                 System.out.println("Tere, " + klient.getKliendiNimi() + "!");
@@ -80,7 +80,7 @@ public class Main {
             System.out.println("""
                     Millist tegevust soovite teha?\s
                      [J] Vaata kontojääki
-                     [P] Vaata konto parooli
+                     [P] Tegevused parooliga
                      [S] Sularaha sissemaks
                      [V] Sularaha väljavõte
                      [Ü] Ülekanne
@@ -91,24 +91,7 @@ public class Main {
                 System.out.println(tegevKlient.vaataJääki());
             }
             if (tegevus.equalsIgnoreCase("P")) {//poolik
-                System.out.println(tegevKlient.vaataParooli() + "\nKas soovite parooli muuta?" +
-                        "\n[J] Jah\n" +
-                        "[E] Ei\n");
-                String tegevusParool;
-                Scanner teguParool = new Scanner(System.in);
-                tegevusParool = teguParool.nextLine();
-                if (tegevusParool.equalsIgnoreCase("J")) {//ei muuda tekstifailis ja kliendi klassis ära parooli, aga tegevustes muudab ja see põhiline(2. rühmatöös parandatav???)
-                    System.out.println("Sisestage uus parool: ");
-                    int tegevusParoolMuutmine;
-                    Scanner teguParoolMuutmine = new Scanner(System.in);
-                    try {
-                        tegevusParoolMuutmine = teguParoolMuutmine.nextInt();
-                        tegevKlient.setParool(tegevusParoolMuutmine);
-                        System.out.println("Teie uus parool on: " + tegevKlient.getParool());
-                    } catch (Exception e) {
-                        System.out.println("Paroolis peavad olema ainult numbrid! ");
-                    }
-                }
+                tegevKlient.parooliTegevused();
             }
             if (tegevus.equalsIgnoreCase("S")) {
                 tegevKlient.sissemaks();

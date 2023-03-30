@@ -52,7 +52,7 @@ public class Tegevused {
             double kogus = sc.nextDouble();
             klient.setKontojääk(klient.getKontojääk() + kogus);
             System.out.println(kogus + " EUR sissemakse teostatud ");
-        } catch (Exception e) {
+        } catch (Exception e) {//vigane summa kui on a la string, double'i asemel
             System.out.println("Vigane summa!");
         }
     }
@@ -63,7 +63,6 @@ public class Tegevused {
         System.out.println("Sisestage summa, mida soovite välja võtta: ");
         try {
             double kogus = sc.nextDouble();
-
             if (piisavSumma(kogus)) {
                 klient.setKontojääk(klient.getKontojääk() - kogus);
                 System.out.println("Sularaha väljavõtt " + kogus + " EUR.");
@@ -86,29 +85,30 @@ public class Tegevused {
                 System.out.println("Sisestage summa, mida soovite üle kanda: ");
                 double ülekandeKogus = sc.nextDouble();
 
-                if ((klient.getKontojääk() - ülekandeKogus) < 0) {
+                if ((klient.getKontojääk() - ülekandeKogus) < 0) {//kontrollib kas kontol on piisavalt raha, et teha sellises summas ülekannet
+                    //kui ei ole siis ütleb nii
                     System.out.println("Kontol pole piisavalt vahendeid, et summat üle kanda.");
                     System.out.println("Hetkene kontojääk on: " + klient.getKontojääk() + " EUR.");
-                } else {
+                } else {//kui on siis kannab
                     klient.setKontojääk(klient.getKontojääk() - ülekandeKogus);
                     System.out.println(ülekandeKogus + " EUR üle kantud kasutajale: " + kelleleÜlekanne);
                 }
             }
-        } catch (Exception e) {
+        } catch (Exception e) {//kui sisestatakse a la String double'i asemel
             System.out.println("Midagi läks valesti! Kontrollige üle kasutajanimi ja summa! ");
         }
     }
 
     // [i] investeerimine (sisaldab math randomit)
     void investeerimine() {
-        String[] fondid = {"Elukestev", "Kogumisfond 10", "Kogumisfond 30", "Kogumisfond 60", "Kogumisfond 100"};
+        String[] fondid = {"Elukestev", "Kogumisfond 10", "Kogumisfond 30", "Kogumisfond 60", "Kogumisfond 100"}; //praegu need ei tee midagi, tulevikus võiks saada suvaliselt tasemele vastavalt investeerida
         String[] fondidKuldklient = {"Rikkur", "Kogumisfond 5000", "Kogumisfond Lill"};
 
         Scanner sc = new Scanner(System.in);
         System.out.println("\n" + "Kas teate millisesse fondi soovite investeerida? [Jah/Ei]");
         String jahEi = sc.nextLine();
 
-        if (jahEi.equalsIgnoreCase("Jah") || jahEi.equalsIgnoreCase("J")){
+        if (jahEi.equalsIgnoreCase("Jah") || jahEi.equalsIgnoreCase("J")) {//juhul kui tead mis fondi investeerida siis küsib täpsustavaid küsimusi
             Scanner scanner = new Scanner(System.in);
             System.out.println("Millisesse fondi soovite investeerida? ");
             String fond = scanner.nextLine();
@@ -118,7 +118,7 @@ public class Tegevused {
             try {
                 double summa = scan.nextDouble();
 
-                if ((klient.getKontojääk() - summa) < 0) {
+                if ((klient.getKontojääk() - summa) < 0) {//kontrollib kas on piisavalt vahendeid, et investeerida antud summat
                     System.out.println("Pole piisvaid vahendeid, et investeerida.");
                     System.out.println("Hetkene kontojääk on: " + klient.getKontojääk() + " EUR.");
                 } else {
@@ -131,8 +131,8 @@ public class Tegevused {
             }
 
         }
-        if (jahEi.equalsIgnoreCase("Ei") || jahEi.equalsIgnoreCase("E")) {//siin ei ole vahet kas oled tava või kuldklient.
-            int indeks = (int) (Math.random() * ((fondid.length)));
+        if (jahEi.equalsIgnoreCase("Ei") || jahEi.equalsIgnoreCase("E")) {//siin ei ole vahet kas oled tava või kuldklient, valib tavafondide seast kõigile.
+            int indeks = (int) (Math.random() * ((fondid.length)));//valib suvalise fondi listist
             System.out.println("Suvaliselt valitud fond on " + fondid[indeks] + ".");
             try {
                 Scanner scanner1 = new Scanner(System.in);
@@ -148,6 +148,26 @@ public class Tegevused {
                 }
             } catch (Exception e) {
                 System.out.println("Vigane summa palun proovige uuesti!");
+            }
+        }
+    }
+
+    void parooliTegevused() {
+        //saad vaadata oma parooli pärast seda, kui oled sisse loginud. Soovi korral ka parooli muuta. Aga ei muuda tekstifailis parooli.
+        System.out.println("Teie parool on: " + klient.getParool());
+        Scanner parooliga = new Scanner(System.in);
+        System.out.println("Kas soovite parooli muuta? [Jah/Ei]");
+
+        String jahEi = parooliga.nextLine();
+        //kui jah siis setParooliga muudab sisselogitud kasutaja parooli
+        if (jahEi.equalsIgnoreCase("Jah") || jahEi.equalsIgnoreCase("J")) {
+            Scanner uus = new Scanner(System.in);
+            System.out.println("Sisestage uus parool: ");
+            try {
+                klient.setParool(uus.nextInt());
+                System.out.println("Teie uus parool on: " + klient.getParool());
+            } catch (Exception e) {
+                System.out.println("Parool peab koosnema täisarvudest!");
             }
         }
     }
