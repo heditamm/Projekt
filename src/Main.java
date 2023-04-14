@@ -46,7 +46,7 @@ public class Main {
 
         //loopina vaatab läbi, kas on sellise nimega klienti peaks panema try catch juurde
         for (Klient klient : kliendid) {
-            if (klient.getKliendiNimi().equals(sisestatudKasutajaNimi)) {
+            if (klient.getKliendiNimi().equalsIgnoreCase(sisestatudKasutajaNimi)) {
                 System.out.println("Tere, " + klient.getKliendiNimi() + "!");
                 sisenevKlient = klient;
                 tegevKlient = new Tegevused(klient, klient.getParool());
