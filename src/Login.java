@@ -19,6 +19,7 @@ public class Login extends JFrame {
     private JFrame raam;
     private List<Klient> kliendid;
     private JButton resetButton;
+
     static List<Klient> loeFailist(String failinimi) throws FileNotFoundException {
         //loeb failist sisse kliendid: täisnimi, parool, kontojääk ning lisab vastavasse klienditasemele
         //paroolide turvalisemat hoiustamist saab 2. rühmatöös katsetada
@@ -78,7 +79,7 @@ public class Login extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String username = kasutajaTekst.getText();
                 String password = new String(parooliTekst.getPassword());
-
+                boolean olemasolu = false;
                 for (Klient klient : kliendid) {
                     if (klient.getKliendiNimi().equalsIgnoreCase(username)) {
                         try {
@@ -87,20 +88,23 @@ public class Login extends JFrame {
                                 JOptionPane.showMessageDialog(Login.this, "Sisselogimine õnnestus!");
                                 kasutajaTekst.setText("");
                                 parooliTekst.setText("");
+                                olemasolu = true;
+                                setVisible(false);
+                                System.exit(0);
                             } else {
-                                JOptionPane.showMessageDialog(Login.this, "Vale kasutajatunnus või parool. Proovige uuesti");
+                                JOptionPane.showMessageDialog(Login.this, "Vale parool. Proovige uuesti.");
+                                parooliTekst.setText("");
+                                olemasolu = true;
                             }
                         } catch (Exception viga) {
                             System.out.println("Vale parooliformaat!");
                         }
-
-                        // Perform login authentication
-                /*if (username.equals("admin") && password.equals("password")) {
-                    JOptionPane.showMessageDialog(Login.this, "Sisselogimine õnnestus!");
-                } else {
-                    JOptionPane.showMessageDialog(Login.this, "Vale kasutajatunnus või parool. Proovige uuesti");
-                }*/
                     }
+                }
+                if (!olemasolu){
+                    JOptionPane.showMessageDialog(Login.this, "Sellist kasutajat ei eksisteeri! Proovige uuesti.");
+                    kasutajaTekst.setText("");
+                    parooliTekst.setText("");
                 }
             }
         });

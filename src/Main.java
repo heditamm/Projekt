@@ -1,10 +1,15 @@
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class Main extends Login{
+    public Main(List<Klient> kliendid) {
+        super(kliendid);
+    }
+
     static List<Klient> loeFailist(String failinimi) throws FileNotFoundException {
         //loeb failist sisse kliendid: täisnimi, parool, kontojääk ning lisab vastavasse klienditasemele
         //paroolide turvalisemat hoiustamist saab 2. rühmatöös katsetada
@@ -34,16 +39,19 @@ public class Main {
         return kliendid;
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException{
         //failist kasutajad
         List<Klient> kliendid = loeFailist("src/Kasutajad.txt");
+
+
         System.out.println("Sisestage oma nimi: ");
         Scanner nimi = new Scanner(System.in);
         String sisestatudKasutajaNimi = nimi.nextLine();
         Tegevused tegevKlient = null;
 
+
         //loopina vaatab läbi, kas on sellise nimega klienti
-        for (Klient klient : kliendid) {try {
+       for (Klient klient : kliendid) {try {
             if (klient.getKliendiNimi().equalsIgnoreCase(sisestatudKasutajaNimi)) {
                 System.out.println("Tere, " + klient.getKliendiNimi() + "!");
                 tegevKlient = new Tegevused(klient, klient.getParool());
