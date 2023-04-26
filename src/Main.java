@@ -28,10 +28,10 @@ public class Main extends Login{
             double summa = Double.parseDouble(ajutineOsad[3]);
 
             if (summa > 5000) {
-                Kuldklient ajutine = new Kuldklient(kontonumber, kliendiNimi, summa, parool);
+                Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, parool);
                 kliendid.add(ajutine);
             } else {
-                Klient ajutineTava = new Klient(kontonumber, kliendiNimi, summa, parool);
+                Klient ajutineTava = new Klient(kliendiNimi, summa, parool);
                 kliendid.add(ajutineTava);
             }
 

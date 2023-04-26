@@ -1,6 +1,6 @@
 public class Kuldklient extends Klient {
-    public Kuldklient(int kasutajaTunnus, String kliendiNimi, double kontojääk, int parool) {
-        super(kasutajaTunnus, kliendiNimi, kontojääk, parool);
+    public Kuldklient(String kliendiNimi, double kontojääk, int parool) {
+        super(kliendiNimi, kontojääk, parool);
     }
 
     @Override

@@ -19,6 +19,7 @@ public class Login extends JFrame {
     private JFrame raam;
     private List<Klient> kliendid;
     private JButton resetButton;
+    public Klient sisselogitu;
 
     static List<Klient> loeFailist(String failinimi) throws FileNotFoundException {
         //loeb failist sisse kliendid: täisnimi, parool, kontojääk ning lisab vastavasse klienditasemele
@@ -38,10 +39,10 @@ public class Login extends JFrame {
             double summa = Double.parseDouble(ajutineOsad[3]);
 
             if (summa > 5000) {
-                Kuldklient ajutine = new Kuldklient(kontonumber, kliendiNimi, summa, parool);
+                Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, parool);
                 kliendid.add(ajutine);
             } else {
-                Klient ajutineTava = new Klient(kontonumber, kliendiNimi, summa, parool);
+                Klient ajutineTava = new Klient(kliendiNimi, summa, parool);
                 kliendid.add(ajutineTava);
             }
 
@@ -85,12 +86,15 @@ public class Login extends JFrame {
                         try {
                             int parool = Integer.parseInt(password);
                             if (klient.getParool() == parool) {
+                                sisselogitu = new Klient(klient.getKliendiNimi(), klient.getKontojääk(), klient.getParool());
                                 JOptionPane.showMessageDialog(Login.this, "Sisselogimine õnnestus!");
                                 kasutajaTekst.setText("");
                                 parooliTekst.setText("");
                                 olemasolu = true;
-                                setVisible(false);
-                                System.exit(0);
+                                new Pank(new Sissemakse(sisselogitu), sisselogitu);
+                                dispose();
+                                //setVisible(false);
+                                //System.exit(0);
                             } else {
                                 JOptionPane.showMessageDialog(Login.this, "Vale parool. Proovige uuesti.");
                                 parooliTekst.setText("");
