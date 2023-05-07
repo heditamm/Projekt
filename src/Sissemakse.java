@@ -45,7 +45,8 @@ class Sissemakse extends JFrame implements ActionListener{
         }
         if (e.getSource()==edasiNupp){
             JOptionPane.showMessageDialog(this, "Sissemakse tehtud!");
-            new Pank(new Sissemakse(sisselogitu), sisselogitu);
+            setVisible(false);
+            new Pank(sisselogitu);
             dispose();
         }
     }

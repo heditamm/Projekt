@@ -16,7 +16,7 @@ public class Pank extends JFrame implements ActionListener {
     private Sissemakse sissemakse;
 
 
-    public Pank(Sissemakse sissemakse, Klient sisselogitu) {
+    public Pank(Klient sisselogitu) {
         this.sisselogitu=sisselogitu;
         setTitle("Pangakonto");
         setSize(400, 300);
@@ -78,6 +78,10 @@ public class Pank extends JFrame implements ActionListener {
         if (e.getSource()==jääkNupp){
             String jääk = "Kontojääk on " + sisselogitu.getKontojääk() + "eur";
             JOptionPane.showMessageDialog(this, jääk);
+        }
+        if (e.getSource()==ülekandeNupp){
+            new Väljamakse(sisselogitu);
+            dispose();
         }
     }
 }

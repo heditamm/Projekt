@@ -91,7 +91,7 @@ public class Login extends JFrame {
                                 kasutajaTekst.setText("");
                                 parooliTekst.setText("");
                                 olemasolu = true;
-                                new Pank(new Sissemakse(sisselogitu), sisselogitu);
+                                new Pank(sisselogitu);
                                 dispose();
                                 //setVisible(false);
                                 //System.exit(0);
