@@ -24,14 +24,14 @@ public class Main extends Login{
 
             int kontonumber = Integer.parseInt(ajutineOsad[0]);
             String kliendiNimi = ajutineOsad[1];
-            int parool = Integer.parseInt(ajutineOsad[2]);
+            String paroolFailistHash = ajutineOsad[2];
             double summa = Double.parseDouble(ajutineOsad[3]);
 
             if (summa > 5000) {
-                Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, parool);
+                Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, paroolFailistHash);
                 kliendid.add(ajutine);
             } else {
-                Klient ajutineTava = new Klient(kliendiNimi, summa, parool);
+                Klient ajutineTava = new Klient(kliendiNimi, summa, paroolFailistHash);
                 kliendid.add(ajutineTava);
             }
 
@@ -66,11 +66,11 @@ public class Main extends Login{
             Scanner paroolScanner = new Scanner(System.in);
             int sisestatudParool;
             assert tegevKlient != null;
-            int parool = tegevKlient.getParool(); //õige parool
+            String parool = tegevKlient.getParool(); //õige parool
             System.out.println("Palun sisestage oma parool: ");
             if (paroolScanner.hasNextInt()) {
                 sisestatudParool = paroolScanner.nextInt();
-                if (sisestatudParool == parool) {
+                if (sisestatudParool == Integer.parseInt(parool)) {
                     System.out.println("Tere tulemast!");
                     break;
                 } else {

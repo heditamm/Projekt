@@ -2,9 +2,9 @@ public class Klient {
     //private int kasutajaTunnus; //nagu tavapangas see numbrite kombo (hetkel veel puudub aga tuleb 2. rühmatöös)
     private String kliendiNimi;
     private double kontojääk;
-    private int parool;
+    private String parool;
 
-    public Klient(String kliendiNimi, double kontojääk, int parool) {
+    public Klient(String kliendiNimi, double kontojääk, String parool) {
         //this.kasutajaTunnus = kasutajaTunnus;
         this.kliendiNimi = kliendiNimi;
         this.kontojääk = kontojääk;
@@ -19,11 +19,11 @@ public class Klient {
         return kontojääk;
     }
 
-    public int getParool() {
+    public String getParool() {
         return parool;
     }
 
-    public void setParool(int parool) {
+    public void setParool(String parool) {
         this.parool = parool;
     }
 

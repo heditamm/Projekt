@@ -35,14 +35,14 @@ public class Login extends JFrame {
 
             int kontonumber = Integer.parseInt(ajutineOsad[0]);
             String kliendiNimi = ajutineOsad[1];
-            int parool = Integer.parseInt(ajutineOsad[2]);
+            String paroolFailistHash = ajutineOsad[2];
             double summa = Double.parseDouble(ajutineOsad[3]);
 
             if (summa > 5000) {
-                Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, parool);
+                Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, paroolFailistHash);
                 kliendid.add(ajutine);
             } else {
-                Klient ajutineTava = new Klient(kliendiNimi, summa, parool);
+                Klient ajutineTava = new Klient(kliendiNimi, summa, paroolFailistHash);
                 kliendid.add(ajutineTava);
             }
 
@@ -79,13 +79,25 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username = kasutajaTekst.getText();
-                String password = new String(parooliTekst.getPassword());
+                String passwordToHash = new String(parooliTekst.getPassword());
+                //näed inputi
+                //System.out.println( passwordToHash);
                 boolean olemasolu = false;
                 for (Klient klient : kliendid) {
                     if (klient.getKliendiNimi().equalsIgnoreCase(username)) {
-                        try {
-                            int parool = Integer.parseInt(password);
-                            if (klient.getParool() == parool) {
+                        try {/*
+                            //Kontrollime, et kas sisestatud parool on õige
+                            String generatedSecuredPasswordHash
+                                    = SHAExample.generateStorngPasswordHash(passwordToHash);
+                            System.out.println(generatedSecuredPasswordHash);
+                            //kas on sama parool
+                            //klient.getParool() on õige!
+                            //teist alati muudab inputi prst
+                            boolean matched = SHAExample.validatePassword(klient.getParool(), generatedSecuredPasswordHash);
+
+*/
+                           boolean matched = true;
+                            if (matched) {
                                 sisselogitu = new Klient(klient.getKliendiNimi(), klient.getKontojääk(), klient.getParool());
                                 JOptionPane.showMessageDialog(Login.this, "Sisselogimine õnnestus!");
                                 kasutajaTekst.setText("");
