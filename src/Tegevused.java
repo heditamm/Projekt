@@ -1,11 +1,10 @@
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Tegevused {
     private Klient klient;
-    private int parool;
+    private String parool;
 
-    public Tegevused(Klient klient, int parool) {
+    public Tegevused(Klient klient, String parool) {
         this.klient = klient;
         this.parool = parool;
     }
@@ -18,17 +17,11 @@ public class Tegevused {
         return klient.getKliendiNimi();
     }
 
-    public double getKontojääk() {
-        return klient.getKontojääk();
-    }
 
-    public int getParool() {
+    public String getParool() {
         return parool;
     }
 
-    public void setParool(int parool) {
-        this.parool = parool;
-    }
 
     // [j] vaata kontojääki
     String vaataJääki() {//saad vaadata kontojääki
@@ -164,7 +157,7 @@ public class Tegevused {
             Scanner uus = new Scanner(System.in);
             System.out.println("Sisestage uus parool: ");
             try {
-                klient.setParool(uus.nextInt());
+                klient.setParool(uus.nextLine());
                 System.out.println("Teie uus parool on: " + klient.getParool());
             } catch (Exception e) {
                 System.out.println("Parool peab koosnema täisarvudest!");
