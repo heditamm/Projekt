@@ -1,0 +1,27 @@
+Kasutaja Taavi Tammlogis sisse.2023-05-09 21:06:09
+Taavi Tamm vaatas kontojääki.2023-05-09 21:06:12
+Taavi Tamm teostas sisssemakse summas: 100.0EUR. 2023-05-09 21:06:16
+Taavi Tamm vaatas kontojääki.2023-05-09 21:06:18
+Taavi Tamm teostas ülekande summas: 200.0EUR. Martale .2023-05-09 21:06:27
+Taavi Tamm vaatas kontojääki.2023-05-09 21:06:29
+Taavi Tamm teostas ülekande summas: 1000.0EUR. Kati Ainle .2023-05-09 21:06:39
+Taavi Tamm vaatas kontojääki.2023-05-09 21:06:43
+Kasutaja Taavi Tammlogis sisse.2023-05-09 21:07:43
+Taavi Tamm vaatas kontojääki.2023-05-09 21:07:46
+Taavi Tamm teostas sisssemakse summas: 1000.0EUR. 2023-05-09 21:07:51
+Taavi Tamm vaatas kontojääki.2023-05-09 21:08:02
+Taavi Tamm teostas ülekande summas: 200.0EUR. Kati Ainle .2023-05-09 21:08:13
+Kasutaja Taavi Tammlogis sisse.2023-05-09 21:10:21
+Taavi Tamm vaatas kontojääki.2023-05-09 21:10:24
+Taavi Tamm teostas sisssemakse summas: 100.0EUR. 2023-05-09 21:10:28
+Taavi Tamm logis välja. 2023-05-09 21:10:31
+Kasutaja Taavi Tammlogis sisse. 2023-05-09 21:13:22
+Taavi Tamm vaatas kontojääki. 2023-05-09 21:13:24
+Taavi Tamm teostas sisssemakse summas: 100.0 EUR. 2023-05-09 21:13:29
+Taavi Tamm logis välja. 2023-05-09 21:13:32
+Kasutaja Taavi Tammlogis sisse. 2023-05-09 21:14:51
+Taavi Tamm vaatas kontojääki. 2023-05-09 21:14:54
+Taavi Tamm teostas sisssemakse summas: 1000.0 EUR. 2023-05-09 21:14:59
+Taavi Tamm teostas sisssemakse summas: 1.0 EUR. 2023-05-09 21:15:02
+Taavi Tamm teostas ülekande summas: 400.0 EUR. inimesle AAA2023-05-09 21:15:16
+Taavi Tamm logis välja. 2023-05-09 21:15:19

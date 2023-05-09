@@ -118,7 +118,7 @@ public class Login extends JFrame {
 
                                 try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))){
                                     String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                                    bw.write("Kasutaja " + sisselogitu.getKliendiNimi() + "logis sisse. " + aeg + "\n");
+                                    bw.write("Kasutaja " + sisselogitu.getKliendiNimi() + " logis sisse. " + aeg + "\n");
                                 }
                                 kasutajaTekst.setText("");
                                 parooliTekst.setText("");
