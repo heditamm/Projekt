@@ -2,8 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Pank extends JFrame implements ActionListener {
+    private final String välja_fail = "tegevuste_logi.txt";
     JLabel jääkLabel;
     JButton jääkNupp;
     JButton paroolNupp;
@@ -67,6 +73,13 @@ public class Pank extends JFrame implements ActionListener {
 
             if (option == JOptionPane.YES_OPTION) {
                 JOptionPane.showMessageDialog(Pank.this, "Head aega!");
+
+                try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
+                    String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    bw.write(sisselogitu.getKliendiNimi() + " logis välja. " + aeg +"\n");
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 dispose();
                 System.exit(0);
             }
@@ -78,6 +91,13 @@ public class Pank extends JFrame implements ActionListener {
         if (e.getSource()==jääkNupp){
             String jääk = "Kontojääk on " + sisselogitu.getKontojääk() + "eur";
             JOptionPane.showMessageDialog(this, jääk);
+
+            try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
+                String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                bw.write(sisselogitu.getKliendiNimi() + " vaatas kontojääki. " + aeg +"\n");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
         if (e.getSource()==ülekandeNupp){
             new Väljamakse(sisselogitu);

@@ -1,16 +1,22 @@
 import jdk.jfr.Event;
 
+import javax.print.attribute.standard.RequestingUserName;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Login extends JFrame {
+    private final String välja_fail = "tegevuste_logi.txt";
     private JLabel kasutajanimi;
     private JLabel parool;
     private JTextField kasutajaTekst;
@@ -63,6 +69,12 @@ public class Login extends JFrame {
         parool = new JLabel("Parool:");
         kasutajaTekst = new JTextField(20);
         parooliTekst = new JPasswordField(20);
+        parooliTekst.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginNupp.doClick();
+            }
+        });
         loginNupp = new JButton("Login");
         // Set layout manager
         setLayout(new GridLayout(3, 2));
@@ -80,12 +92,16 @@ public class Login extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String username = kasutajaTekst.getText();
                 String passwordToHash = new String(parooliTekst.getPassword());
+
                 //näed inputi
                 //System.out.println( passwordToHash);
                 boolean olemasolu = false;
                 for (Klient klient : kliendid) {
                     if (klient.getKliendiNimi().equalsIgnoreCase(username)) {
-                        try {/*
+                        String stored = klient.getParool();
+                        boolean matched = true;
+                        try {
+                            /*
                             //Kontrollime, et kas sisestatud parool on õige
                             String generatedSecuredPasswordHash
                                     = SHAExample.generateStorngPasswordHash(passwordToHash);
@@ -96,10 +112,14 @@ public class Login extends JFrame {
                             boolean matched = SHAExample.validatePassword(klient.getParool(), generatedSecuredPasswordHash);
 
 */
-                           boolean matched = true;
                             if (matched) {
                                 sisselogitu = new Klient(klient.getKliendiNimi(), klient.getKontojääk(), klient.getParool());
                                 JOptionPane.showMessageDialog(Login.this, "Sisselogimine õnnestus!");
+
+                                try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))){
+                                    String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                                    bw.write("Kasutaja " + sisselogitu.getKliendiNimi() + "logis sisse. " + aeg + "\n");
+                                }
                                 kasutajaTekst.setText("");
                                 parooliTekst.setText("");
                                 olemasolu = true;

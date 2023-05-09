@@ -2,11 +2,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Väljamakse extends JFrame implements ActionListener {
+    private final String välja_fail = "tegevuste_logi.txt";
     private Klient sisselogitu;
-    JLabel kelleleField;
-    JLabel paljuField;
+    JTextField kelleleField;
+    JTextField paljuField;
     JButton edasiNupp;
 
     public Väljamakse(Klient sisselogitu){
@@ -17,10 +23,16 @@ public class Väljamakse extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel kelleleLabel = new JLabel("Kellele: ");
-        JTextField kelleleField = new JTextField(10);
+        kelleleField = new JTextField(10);
 
         JLabel väljaLabel = new JLabel("Ülekantav summa: ");
-        JTextField paljuField = new JTextField(10);
+        paljuField = new JTextField(10);
+        paljuField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                edasiNupp.doClick();
+            }
+        });
         edasiNupp = new JButton("Edasi");
         edasiNupp.addActionListener(this);
 
@@ -42,27 +54,30 @@ public class Väljamakse extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Kellele: ")){
+        if (e.getSource() == edasiNupp) {
             String inimene = kelleleField.getText();
-
-        }
-        if (e.getActionCommand().equals("Ülekantav summa: ")){//ei kontrolli kas kontol piisavalt
             double summa = Double.parseDouble(paljuField.getText());
-            if (summa>sisselogitu.getKontojääk()){
+            if (summa > sisselogitu.getKontojääk()) {
                 System.out.println(sisselogitu.getKontojääk());
                 JOptionPane.showMessageDialog(this, "Kontol pole piisavalt vahendeid!");
-            }
-            else {
+                setVisible(false);
+                new Pank(sisselogitu);
+                dispose();
+            } else {
                 sisselogitu.setKontojääk(sisselogitu.getKontojääk() - summa);
-            }
-        }
-        if (e.getSource()==edasiNupp){
-            if (e.getSource()==edasiNupp) {
-                JOptionPane.showMessageDialog(this, "Ülekanne tehtud!");
+                JOptionPane.showMessageDialog(this, "Ülekanne kasutajale " + inimene + " tehtud!");//ei muuda selle teise inimese jääki
+
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
+                    String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    bw.write(sisselogitu.getKliendiNimi() + " teostas ülekande summas: " + summa + " EUR. " + "inimesle " + inimene  + aeg + "\n");
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 setVisible(false);
                 new Pank(sisselogitu);
                 dispose();
             }
         }
     }
+
 }

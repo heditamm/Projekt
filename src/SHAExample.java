@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Base64;
 
 /*
 https://howtodoinjava.com/java/java-security/how-to-generate-secure-password-hash-md5-sha-pbkdf2-bcrypt-examples/
@@ -32,8 +33,9 @@ public class SHAExample {
     {
         String[] parts = storedPassword.split(":");
         int iterations = Integer.parseInt(parts[0]);
-        byte[] salt = fromHex(parts[1]);
-        byte[] hash = fromHex(parts[2]);
+
+        byte[] salt = Base64.getDecoder().decode(parts[1]);
+        byte[] hash = Base64.getDecoder().decode(parts[2]);
         PBEKeySpec spec = new PBEKeySpec(originalPassword.toCharArray(),
                 salt, iterations, hash.length * 8);
         SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");

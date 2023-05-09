@@ -2,10 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 class Sissemakse extends JFrame implements ActionListener{
+    private final String välja_fail = "tegevuste_logi.txt";
     private Klient sisselogitu;
-    JLabel sisseField;
+    JTextField sisseField;
     JButton edasiNupp;
 
     /*public Sissemakse(Klient sisselogitu) throws HeadlessException {
@@ -19,7 +25,13 @@ class Sissemakse extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel sisseLabel = new JLabel("Sissemakstav summa: ");
-        JTextField sisseField = new JTextField(10);
+        sisseField = new JTextField(10);
+        sisseField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                edasiNupp.doClick();
+            }
+        });
         edasiNupp = new JButton("Edasi");
         edasiNupp.addActionListener(this);
 
@@ -38,13 +50,17 @@ class Sissemakse extends JFrame implements ActionListener{
         setVisible(true);
     }
     public void actionPerformed(ActionEvent e){
-        if (e.getActionCommand().equals("Sissemakstav summa: ")){
+        if (e.getSource()==edasiNupp){
             double summa = Double.parseDouble(sisseField.getText());
             sisselogitu.setKontojääk((sisselogitu.getKontojääk()+summa));
-            System.out.println(sisselogitu.getKontojääk());
-        }
-        if (e.getSource()==edasiNupp){
             JOptionPane.showMessageDialog(this, "Sissemakse tehtud!");
+
+            try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
+                String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                bw.write(sisselogitu.getKliendiNimi() + " teostas sisssemakse summas: " + summa + " EUR. " + aeg +"\n");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             setVisible(false);
             new Pank(sisselogitu);
             dispose();
