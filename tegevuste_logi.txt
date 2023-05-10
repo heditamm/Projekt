@@ -36,3 +36,8 @@ Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:33:22
 Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:33:51
 Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:45:55
 Kasutaja Diana Saar logis sisse. 2023-05-10 12:47:04
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 13:15:16
+Taavi Tamm vaatas kontojääki. 2023-05-10 13:15:20
+Taavi Tamm teostas sisssemakse summas: 100.0 EUR. 2023-05-10 13:15:29
+Taavi Tamm teostas ülekande summas: 200.0 EUR. inimesle aaa2023-05-10 13:15:36
+Taavi Tamm logis välja. 2023-05-10 13:15:45

@@ -10,16 +10,16 @@ import java.time.format.DateTimeFormatter;
 
 public class Väljamakse extends JFrame implements ActionListener {
     private final String välja_fail = "tegevuste_logi.txt";
-    private Klient sisselogitu;
+    private final Klient sisselogitu;
     JTextField kelleleField;
     JTextField paljuField;
     JButton edasiNupp;
 
-    public Väljamakse(Klient sisselogitu){
-        this.sisselogitu=sisselogitu;
+    public Väljamakse(Klient sisselogitu) {
+        this.sisselogitu = sisselogitu;
         setTitle("Väljamakse tegemine");
 
-        setSize(300,150);
+        setSize(300, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel kelleleLabel = new JLabel("Kellele: ");
@@ -60,23 +60,20 @@ public class Väljamakse extends JFrame implements ActionListener {
             if (summa > sisselogitu.getKontojääk()) {
                 System.out.println(sisselogitu.getKontojääk());
                 JOptionPane.showMessageDialog(this, "Kontol pole piisavalt vahendeid!");
-                setVisible(false);
-                new Pank(sisselogitu);
-                dispose();
             } else {
                 sisselogitu.setKontojääk(sisselogitu.getKontojääk() - summa);
                 JOptionPane.showMessageDialog(this, "Ülekanne kasutajale " + inimene + " tehtud!");//ei muuda selle teise inimese jääki
 
                 try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
                     String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                    bw.write(sisselogitu.getKliendiNimi() + " teostas ülekande summas: " + summa + " EUR. " + "inimesle " + inimene  + aeg + "\n");
+                    bw.write(sisselogitu.getKliendiNimi() + " teostas ülekande summas: " + summa + " EUR. " + "inimesle " + inimene + " " + aeg + "\n");
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                setVisible(false);
-                new Pank(sisselogitu);
-                dispose();
             }
+            setVisible(false);
+            new Pank(sisselogitu);
+            dispose();
         }
     }
 

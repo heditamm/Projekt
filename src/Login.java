@@ -1,6 +1,3 @@
-import jdk.jfr.Event;
-
-import javax.print.attribute.standard.RequestingUserName;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,9 +19,6 @@ public class Login extends JFrame {
     private JTextField kasutajaTekst;
     private JPasswordField parooliTekst;
     private JButton loginNupp;
-    private JFrame raam;
-    private List<Klient> kliendid;
-    private JButton resetButton;
     public Klient sisselogitu;
 
     static List<Klient> loeFailist(String failinimi) throws FileNotFoundException {
@@ -42,7 +36,7 @@ public class Login extends JFrame {
             String kliendiNimi = ajutineOsad[1];
             String parool = ajutineOsad[2];
             double summa = Double.parseDouble(ajutineOsad[3]);
-            String hash= ajutineOsad[4];
+            String hash = ajutineOsad[4];
 
             if (summa > 5000) {
                 Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, parool, hash);
@@ -100,15 +94,12 @@ public class Login extends JFrame {
                             String salt = klient.getParooliHash();
                             String regeneratedPassowrdToVerify =
                                     SHAExample.getSecurePassword(passwordToHash, salt);
-                            boolean matched=false;
-                            if(klient.getParool().equals(regeneratedPassowrdToVerify)) {
-                                 matched = true;
-                            }
+                            boolean matched = klient.getParool().equals(regeneratedPassowrdToVerify);
                             if (matched) {
                                 sisselogitu = new Klient(klient.getKliendiNimi(), klient.getKontojääk(), klient.getParool(), klient.getParooliHash());
                                 JOptionPane.showMessageDialog(Login.this, "Sisselogimine õnnestus!");
 
-                                try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))){
+                                try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
                                     String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                                     bw.write("Kasutaja " + sisselogitu.getKliendiNimi() + " logis sisse. " + aeg + "\n");
                                 }
@@ -117,8 +108,6 @@ public class Login extends JFrame {
                                 olemasolu = true;
                                 new Pank(sisselogitu);
                                 dispose();
-                                //setVisible(false);
-                                //System.exit(0);
                             } else {
                                 JOptionPane.showMessageDialog(Login.this, "Vale parool. Proovige uuesti.");
                                 parooliTekst.setText("");
@@ -129,7 +118,7 @@ public class Login extends JFrame {
                         }
                     }
                 }
-                if (!olemasolu){
+                if (!olemasolu) {
                     JOptionPane.showMessageDialog(Login.this, "Sellist kasutajat ei eksisteeri! Proovige uuesti.");
                     kasutajaTekst.setText("");
                     parooliTekst.setText("");
