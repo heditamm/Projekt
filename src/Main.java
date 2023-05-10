@@ -24,14 +24,15 @@ public class Main extends Login{
 
             int kontonumber = Integer.parseInt(ajutineOsad[0]);
             String kliendiNimi = ajutineOsad[1];
-            String paroolFailistHash = ajutineOsad[2];
+            String parool = ajutineOsad[2];
             double summa = Double.parseDouble(ajutineOsad[3]);
+            String hash=ajutineOsad[4];
 
             if (summa > 5000) {
-                Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, paroolFailistHash);
+                Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, parool, hash);
                 kliendid.add(ajutine);
             } else {
-                Klient ajutineTava = new Klient(kliendiNimi, summa, paroolFailistHash);
+                Klient ajutineTava = new Klient(kliendiNimi, summa, parool, hash);
                 kliendid.add(ajutineTava);
             }
 

@@ -25,3 +25,14 @@ Taavi Tamm teostas sisssemakse summas: 1000.0 EUR. 2023-05-09 21:14:59
 Taavi Tamm teostas sisssemakse summas: 1.0 EUR. 2023-05-09 21:15:02
 Taavi Tamm teostas ülekande summas: 400.0 EUR. inimesle AAA2023-05-09 21:15:16
 Taavi Tamm logis välja. 2023-05-09 21:15:19
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 11:01:11
+Taavi Tamm vaatas kontojääki. 2023-05-10 11:01:13
+Taavi Tamm teostas sisssemakse summas: 5.0 EUR. 2023-05-10 11:01:17
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 11:04:58
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:29:26
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:31:51
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:32:04
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:33:22
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:33:51
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:45:55
+Kasutaja Diana Saar logis sisse. 2023-05-10 12:47:04

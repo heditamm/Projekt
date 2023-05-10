@@ -29,7 +29,6 @@ public class Login extends JFrame {
 
     static List<Klient> loeFailist(String failinimi) throws FileNotFoundException {
         //loeb failist sisse kliendid: täisnimi, parool, kontojääk ning lisab vastavasse klienditasemele
-        //paroolide turvalisemat hoiustamist saab 2. rühmatöös katsetada
         ArrayList<Klient> kliendid = new ArrayList<>();
 
         File file = new File(failinimi);
@@ -41,14 +40,15 @@ public class Login extends JFrame {
 
             int kontonumber = Integer.parseInt(ajutineOsad[0]);
             String kliendiNimi = ajutineOsad[1];
-            String paroolFailistHash = ajutineOsad[2];
+            String parool = ajutineOsad[2];
             double summa = Double.parseDouble(ajutineOsad[3]);
+            String hash= ajutineOsad[4];
 
             if (summa > 5000) {
-                Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, paroolFailistHash);
+                Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, parool, hash);
                 kliendid.add(ajutine);
             } else {
-                Klient ajutineTava = new Klient(kliendiNimi, summa, paroolFailistHash);
+                Klient ajutineTava = new Klient(kliendiNimi, summa, parool, hash);
                 kliendid.add(ajutineTava);
             }
 
@@ -91,29 +91,21 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username = kasutajaTekst.getText();
-                String passwordToHash = new String(parooliTekst.getPassword());
-
-                //näed inputi
-                //System.out.println( passwordToHash);
+                String passwordToHash = String.valueOf(parooliTekst.getPassword());
+                System.out.println(passwordToHash);
                 boolean olemasolu = false;
                 for (Klient klient : kliendid) {
                     if (klient.getKliendiNimi().equalsIgnoreCase(username)) {
-                        String stored = klient.getParool();
-                        boolean matched = true;
                         try {
-                            /*
-                            //Kontrollime, et kas sisestatud parool on õige
-                            String generatedSecuredPasswordHash
-                                    = SHAExample.generateStorngPasswordHash(passwordToHash);
-                            System.out.println(generatedSecuredPasswordHash);
-                            //kas on sama parool
-                            //klient.getParool() on õige!
-                            //teist alati muudab inputi prst
-                            boolean matched = SHAExample.validatePassword(klient.getParool(), generatedSecuredPasswordHash);
-
-*/
+                            String salt = klient.getParooliHash();
+                            String regeneratedPassowrdToVerify =
+                                    SHAExample.getSecurePassword(passwordToHash, salt);
+                            boolean matched=false;
+                            if(klient.getParool().equals(regeneratedPassowrdToVerify)) {
+                                 matched = true;
+                            }
                             if (matched) {
-                                sisselogitu = new Klient(klient.getKliendiNimi(), klient.getKontojääk(), klient.getParool());
+                                sisselogitu = new Klient(klient.getKliendiNimi(), klient.getKontojääk(), klient.getParool(), klient.getParooliHash());
                                 JOptionPane.showMessageDialog(Login.this, "Sisselogimine õnnestus!");
 
                                 try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))){

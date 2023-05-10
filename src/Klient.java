@@ -1,14 +1,14 @@
 public class Klient {
-    //private int kasutajaTunnus; //nagu tavapangas see numbrite kombo (hetkel veel puudub aga tuleb 2. rühmatöös)
     private String kliendiNimi;
     private double kontojääk;
     private String parool;
+    private String parooliHash;
 
-    public Klient(String kliendiNimi, double kontojääk, String parool) {
-        //this.kasutajaTunnus = kasutajaTunnus;
+    public Klient(String kliendiNimi, double kontojääk, String parool, String parooliHash) {
         this.kliendiNimi = kliendiNimi;
         this.kontojääk = kontojääk;
         this.parool = parool;
+        this.parooliHash=parooliHash;
     }
 
     public String getKliendiNimi() {
@@ -29,6 +29,14 @@ public class Klient {
 
     public void setKontojääk(double kontojääk) {
         this.kontojääk = kontojääk;
+    }
+
+    public String getParooliHash() {
+        return parooliHash;
+    }
+
+    public void setParooliHash(String parooliHash) {
+        this.parooliHash = parooliHash;
     }
 
     String tase() {
