@@ -57,44 +57,21 @@ public class parooliMuutmine extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this, "Parool peab pikem kui 3 numbrit olema!");
             } else {
                 JOptionPane.showMessageDialog(this, "Parool muudetud!");
-                //muudab parooli (POOLIK)
+                //muudab parooli
                 String searchWord = sisselogitu.getParool(); // otsitav sõna
-                List<String> failiSisu = new ArrayList<>();
                 //uus parool hashiks
                 String salt = sisselogitu.getParooliHash();
                 String regeneratedPassowrdToVerify =
                         SHAExample.getSecurePassword(uus, salt);
-
+                // muudan kahes failis proolid ära
+                //try catch väga koledad aga intellij ei jää mitte mingil muul moel rahule
                 try {
-                    // Faili lugemiseks kasutatav reader
-                    BufferedReader reader = new BufferedReader(new FileReader("src/Kasutajad.txt"));
-
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        failiSisu.add(line);
-                    }
-
-                    reader.close();
-
-                    // Asenda kindel sõna
-                    for (int i = 0; i < failiSisu.size(); i++) {
-                        String modifiedLine = failiSisu.get(i).replace(searchWord, regeneratedPassowrdToVerify);
-                        failiSisu.set(i, modifiedLine);
-                    }
-
-                    // Kirjuta muudetud sisu tagasi faili
-                    BufferedWriter writer = new BufferedWriter(new FileWriter("src/Kasutajad.txt"));
-
-                    for (String modifiedLine : failiSisu) {
-                        writer.write(modifiedLine);
-                        writer.newLine();
-                    }
-
-                    writer.close();
-                } catch (IOException exception) {
-                    exception.printStackTrace();
+                    vahetaSõna("src/Kasutajad.txt", searchWord, regeneratedPassowrdToVerify);
+                    vahetaSõna("src/algne.txt", Login.getPasswordToHash(), uus);
+                    //loogliselt mõeldes siis see Login.getPasswordToHash() ebaturvaline, milleks muidu parooli hash jne aga ei tea kuidas teisiti seda lahendada
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
-
                 //kirjutab logi
                 try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
                     String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -102,11 +79,34 @@ public class parooliMuutmine extends JFrame implements ActionListener {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
+            }
                 setVisible(false);
                 new Pank(sisselogitu);
                 dispose();
-
             }
         }
+
+    public static void vahetaSõna(String failinimi, String sõna, String uus) throws IOException {
+        List<String> failiSisu = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new FileReader(failinimi));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            failiSisu.add(line);
+        }
+        reader.close();
+        // Asenda kindel sõna
+        for (int i = 0; i < failiSisu.size(); i++) {
+            String modifiedLine = failiSisu.get(i).replace(sõna, uus);
+            failiSisu.set(i, modifiedLine);
+        }
+        // Kirjuta muudetud sisu tagasi faili
+        BufferedWriter writer = new BufferedWriter(new FileWriter(failinimi));
+        for (String modifiedLine : failiSisu) {
+            writer.write(modifiedLine);
+            writer.newLine();
+        }
+        writer.close();
     }
 }
+
+

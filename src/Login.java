@@ -1,6 +1,3 @@
-import jdk.jfr.Event;
-
-import javax.print.attribute.standard.RequestingUserName;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,12 +17,10 @@ public class Login extends JFrame {
     private JLabel kasutajanimi;
     private JLabel parool;
     private JTextField kasutajaTekst;
-    private JPasswordField parooliTekst;
+    private static JPasswordField parooliTekst;
     private JButton loginNupp;
-    private JFrame raam;
-    private List<Klient> kliendid;
-    private JButton resetButton;
     public Klient sisselogitu;
+    public static String passwordToHash;
 
     static List<Klient> loeFailist(String failinimi) throws FileNotFoundException {
         //loeb failist sisse kliendid: täisnimi, parool, kontojääk ning lisab vastavasse klienditasemele
@@ -90,7 +85,7 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username = kasutajaTekst.getText();
-                String passwordToHash = String.valueOf(parooliTekst.getPassword());
+                 passwordToHash = String.valueOf(parooliTekst.getPassword());
                 boolean olemasolu = false;
                 for (Klient klient : kliendid) {
                     if (klient.getKliendiNimi().equalsIgnoreCase(username)) {
@@ -150,5 +145,9 @@ public class Login extends JFrame {
                 new Login(kliendid);
             }
         });
+    }
+
+    public static String getPasswordToHash() {
+        return passwordToHash;
     }
 }

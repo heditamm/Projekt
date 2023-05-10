@@ -5,16 +5,18 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pank extends JFrame implements ActionListener {
     private final String välja_fail = "tegevuste_logi.txt";
+    private final Klient sisselogitu;
     JButton jääkNupp;
     JButton paroolNupp;
     JButton sissemaksNupp;
     JButton ülekandeNupp;
     JButton investNupp;
     JButton logivälja;
-    private final Klient sisselogitu;
 
     public Pank(Klient sisselogitu) {
         this.sisselogitu = sisselogitu;
@@ -97,31 +99,54 @@ public class Pank extends JFrame implements ActionListener {
             new Väljamakse(sisselogitu);
             dispose();
         }
-        if (e.getSource()==paroolNupp){
-            boolean kasParooliMuudetud=false;
+        /**
+         * WI TÖÖTA SEE EDASI, ei näita kui parooli muudetud
+         */
+        boolean kasParooliMuudeti=false;
+        int parool = 0;
+        if (e.getSource() == paroolNupp) {
             Object[] valikud = {"Vaatama", "Muutma"};
             int option = JOptionPane.showOptionDialog(Pank.this, "Kas soovite parooli vaadata või muuta?", "Parooliga", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, valikud, valikud[1]);
-            if (option == JOptionPane.YES_OPTION) {
-                JOptionPane.showMessageDialog(this, "Teie parool on: "+ sisselogitu.getParool());
+            if (option == JOptionPane.YES_OPTION) {//parooli vaatamine
+                try {
+                    List<String> failiSisu = new ArrayList<>();
+                    BufferedReader reader = new BufferedReader(new FileReader("src/algne.txt"));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        failiSisu.add(line);
+                    }
+                    reader.close();
+                    for (int i = 0; i < failiSisu.size(); i++) {
+                        if (failiSisu.get(i) == sisselogitu.getKliendiNimi()) {
+                            parool = Integer.parseInt(failiSisu.get(i + 1));
 
-                try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
-                    String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                    bw.write(sisselogitu.getKliendiNimi() + " vaatas enda parooli. " + aeg +"\n");
+                        }
+                    }if(kasParooliMuudeti) {
+                        JOptionPane.showMessageDialog(this, "Teie parool on: " + parool);
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Teie parool on: " + Login.getPasswordToHash());
+
+                    }
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-
-            } if (option == JOptionPane.NO_OPTION) {
+                //parooli vaatamine
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
+                    String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    bw.write(sisselogitu.getKliendiNimi() + " vaatas enda parooli. " + aeg + "\n");
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+            if (option == JOptionPane.NO_OPTION) {//parooli muutmine
                 new parooliMuutmine(sisselogitu);
                 dispose();
-
-                try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
                     String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                    bw.write(sisselogitu.getKliendiNimi() + " vahetas enda prooli. " + aeg +"\n");
+                    bw.write(sisselogitu.getKliendiNimi() + " vahetas enda prooli. " + aeg + "\n");
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-
             }
         }
     }
