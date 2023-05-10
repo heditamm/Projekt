@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-class Sissemakse extends JFrame implements ActionListener{
+class Sissemakse extends JFrame implements ActionListener {
     private final String välja_fail = "tegevuste_logi.txt";
-    private Klient sisselogitu;
+    private final Klient sisselogitu;
     JTextField sisseField;
     JButton edasiNupp;
 
@@ -18,10 +18,10 @@ class Sissemakse extends JFrame implements ActionListener{
         this.sisselogitu = sisselogitu;
     }*/
 
-    public Sissemakse(Klient sisselogitu){
-        this.sisselogitu=sisselogitu;
+    public Sissemakse(Klient sisselogitu) {
+        this.sisselogitu = sisselogitu;
         setTitle("Sissemakse tegemine");
-        setSize(300,150);
+        setSize(300, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel sisseLabel = new JLabel("Sissemakstav summa: ");
@@ -49,15 +49,16 @@ class Sissemakse extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
         setVisible(true);
     }
-    public void actionPerformed(ActionEvent e){
-        if (e.getSource()==edasiNupp){
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == edasiNupp) {
             double summa = Double.parseDouble(sisseField.getText());
-            sisselogitu.setKontojääk((sisselogitu.getKontojääk()+summa));
+            sisselogitu.setKontojääk((sisselogitu.getKontojääk() + summa));
             JOptionPane.showMessageDialog(this, "Sissemakse tehtud!");
 
-            try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
                 String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                bw.write(sisselogitu.getKliendiNimi() + " teostas sisssemakse summas: " + summa + " EUR. " + aeg +"\n");
+                bw.write(sisselogitu.getKliendiNimi() + " teostas sisssemakse summas: " + summa + " EUR. " + aeg + "\n");
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
