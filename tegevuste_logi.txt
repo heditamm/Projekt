@@ -41,3 +41,12 @@ Taavi Tamm vaatas kontojääki. 2023-05-10 13:15:20
 Taavi Tamm teostas sisssemakse summas: 100.0 EUR. 2023-05-10 13:15:29
 Taavi Tamm teostas ülekande summas: 200.0 EUR. inimesle aaa2023-05-10 13:15:36
 Taavi Tamm logis välja. 2023-05-10 13:15:45
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 15:20:48
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:20:49
+Taavi Tamm muutis parooli 1541c2512e743ca7b21dd397229bb9a5
+Taavi Tamm logis välja. 2023-05-10 15:20:55
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 15:21:04
+Taavi Tamm vaatas enda parooli. 2023-05-10 15:21:06
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:21:07
+Taavi Tamm muutis parooli 515152e853aa159d8fe2702e76938f7b
+Taavi Tamm logis välja. 2023-05-10 15:21:13
