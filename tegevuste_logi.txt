@@ -153,3 +153,55 @@ Taavi Tamm vaatas enda parooli. 2023-05-10 16:55:44
 Taavi Tamm vahetas enda prooli. 2023-05-10 16:55:46
 Taavi Tamm muutis parooli 515152e853aa159d8fe2702e76938f7b
 Taavi Tamm vaatas enda parooli. 2023-05-10 16:55:51
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 18:54:17
+Taavi Tamm vaatas enda parooli. 2023-05-10 18:54:24
+Taavi Tamm vahetas enda prooli. 2023-05-10 18:54:27
+Taavi Tamm muutis parooli 2023-05-10 18:54:33
+Taavi Tamm logis välja. 2023-05-10 18:54:36
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:00:34
+Taavi Tamm vahetas enda prooli. 2023-05-10 19:00:38
+Taavi Tamm muutis parooli 2023-05-10 19:00:43
+Taavi Tamm vahetas enda prooli. 2023-05-10 19:00:48
+Taavi Tamm muutis parooli 2023-05-10 19:00:52
+Taavi Tamm logis välja. 2023-05-10 19:00:55
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:04:16
+Taavi Tamm logis välja. 2023-05-10 19:04:26
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:28:50
+Taavi Tamm investeeris 100.0 EUR. fondi proov 2023-05-10 19:29:00
+Taavi Tamm logis välja. 2023-05-10 19:29:10
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:29:42
+Taavi Tamm investeeris 1.0 EUR. fondi Taavi 2023-05-10 19:29:55
+Taavi Tamm logis välja. 2023-05-10 19:30:00
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:30:10
+Taavi Tamm teostas sisssemakse summas: 100.0 EUR. 2023-05-10 19:30:15
+Taavi Tamm logis välja. 2023-05-10 19:30:18
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:34:16
+Taavi Tamm vaatas kontojääki. 2023-05-10 19:34:23
+Taavi Tamm investeeris 100.0 EUR. fondi Fond 10 2023-05-10 19:34:29
+Taavi Tamm vaatas kontojääki. 2023-05-10 19:34:37
+Taavi Tamm investeeris 100.0 EUR. fondi Kogumisfond 30 2023-05-10 19:34:45
+Taavi Tamm logis välja. 2023-05-10 19:34:48
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:35:20
+Taavi Tamm investeeris 10.0 EUR. fondi Taavi  2023-05-10 19:35:28
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:35:58
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:36:27
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:37:07
+Taavi Tamm investeeris 10.0 EUR. fondi Kogumisfond 30 2023-05-10 19:37:19
+Taavi Tamm logis välja. 2023-05-10 19:37:22
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:37:41
+Taavi Tamm investeeris 10.0 EUR. fondi Kogumisfond 100 2023-05-10 19:37:48
+Taavi Tamm vaatas kontojääki. 2023-05-10 19:37:51
+Taavi Tamm logis välja. 2023-05-10 19:37:54
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:43:53
+Taavi Tamm teostas sisssemakse summas: 100.0 EUR. 2023-05-10 19:43:56
+Taavi Tamm logis välja. 2023-05-10 19:43:58
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:48:03
+Taavi Tamm logis välja. 2023-05-10 19:48:09
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:51:17
+Taavi Tamm logis välja. 2023-05-10 19:51:21
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:52:14
+Taavi Tamm vaatas kontojääki. 2023-05-10 19:52:17
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:53:28
+Taavi Tamm vaatas kontojääki. 2023-05-10 19:53:31
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:54:22
+Taavi Tamm logis välja. 2023-05-10 19:54:24

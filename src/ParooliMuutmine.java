@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class parooliMuutmine extends JFrame implements ActionListener {
+public class ParooliMuutmine extends JFrame implements ActionListener {
     private final String välja_fail = "tegevuste_logi.txt";
     JTextField uusParool;
     JButton edasiNupp;
     private Klient sisselogitu;
 
 
-    public parooliMuutmine(Klient sisselogitu) {
+    public ParooliMuutmine(Klient sisselogitu) {
         this.sisselogitu = sisselogitu;
         setTitle("Parooli muutmine");
 
@@ -32,7 +32,7 @@ public class parooliMuutmine extends JFrame implements ActionListener {
                 edasiNupp.doClick();
             }
         });
-        edasiNupp = new JButton("Salvsta");
+        edasiNupp = new JButton("Salvesta");
         edasiNupp.addActionListener(this);
 
         JPanel väljaPanel = new JPanel();
@@ -56,13 +56,20 @@ public class parooliMuutmine extends JFrame implements ActionListener {
             if (uus.length() < 3) {
                 JOptionPane.showMessageDialog(this, "Parool peab pikem kui 3 numbrit olema!");
             } else {
-                JOptionPane.showMessageDialog(this, "Parool muudetud!");
                 //muudab parooli
                 String searchWord = sisselogitu.getParool(); // otsitav sõna
                 //uus parool hashiks
                 String salt = sisselogitu.getParooliHash();
                 String regeneratedPassowrdToVerify =
                         SHAExample.getSecurePassword(uus, salt);
+                JOptionPane.showMessageDialog(this, "Parool muudetud!");
+                Object[] valikud = {"Jah", "Ei"};
+                int option = JOptionPane.showOptionDialog(this, "Kas soovite uut parooli vaadata?", "Uue parooli vaatamine", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, valikud, valikud[1]);
+                if (option == JOptionPane.YES_OPTION) {
+                    JOptionPane.showMessageDialog(this, "Uus parool: " + uus);
+                }
+                dispose();
+
                 // muudan kahes failis proolid ära
                 //try catch väga koledad aga intellij ei jää mitte mingil muul moel rahule
                 try {
@@ -75,16 +82,16 @@ public class parooliMuutmine extends JFrame implements ActionListener {
                 //kirjutab logi
                 try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
                     String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                    bw.write(sisselogitu.getKliendiNimi() + " muutis parooli " + regeneratedPassowrdToVerify + "\n");
+                    bw.write(sisselogitu.getKliendiNimi() + " muutis parooli " + aeg + "\n");
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
             }
-                setVisible(false);
-                new Pank(sisselogitu);
-                dispose();
-            }
+            setVisible(false);
+            new Pank(sisselogitu);
+            dispose();
         }
+    }
 
     public static void vahetaSõna(String failinimi, String sõna, String uus) throws IOException {
         List<String> failiSisu = new ArrayList<>();

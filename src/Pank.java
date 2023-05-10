@@ -21,16 +21,9 @@ public class Pank extends JFrame implements ActionListener {
     public Pank(Klient sisselogitu) {
         this.sisselogitu = sisselogitu;
         setTitle("Pangakonto");
+
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        /*Millist tegevust soovite teha?s
-                     [J] Vaata kontojääki
-                     [P] Tegevused parooliga
-                     [S] Sularaha sissemaks
-                     [V] Sularaha väljavõte // pole vaja kui on nagu äpp
-                     [Ü] Ülekanne
-                     [I] Investeeri
-                     [Q] Lõpeta tegevus*/
 
         jääkNupp = new JButton("Kontojääki vaatama");
         paroolNupp = new JButton("Tegevused parooliga");
@@ -99,10 +92,25 @@ public class Pank extends JFrame implements ActionListener {
             new Väljamakse(sisselogitu);
             dispose();
         }
-        /**
-         * WI TÖÖTA SEE EDASI, ei näita kui parooli muudetud
-         */
-        boolean kasParooliMuudeti=false;
+        if (e.getSource() == investNupp) {
+            Object[] valikud = {"Jah", "Ei"};
+            int option = JOptionPane.showOptionDialog(Pank.this, "Kas teate millisesse fondi Te soovite investeerida?", "Küsimus", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, valikud, valikud[1]);
+
+            if (option == JOptionPane.YES_OPTION) {
+                new Investeerimine(sisselogitu);
+                dispose();
+            }
+            if (option == JOptionPane.NO_OPTION) {
+                String[] fondid = {"Elukestev", "Kogumisfond 10", "Kogumisfond 30", "Kogumisfond 60", "Kogumisfond 100"}; //praegu need ei tee midagi, tulevikus võiks saada suvaliselt tasemele vastavalt investeerida
+                int indeks = (int) (Math.random() * ((fondid.length)));//valib suvalise fondi listist
+                String fond = fondid[indeks];
+                JOptionPane.showMessageDialog(Pank.this, "Teile suvaliselt valitud fond on " + fond + ".");
+                new InvesteerimineEbakindel(sisselogitu, fond);
+                dispose();
+            }
+
+        }
+        boolean kasParooliMuudeti = false;
         int parool = 0;
         if (e.getSource() == paroolNupp) {
             Object[] valikud = {"Vaatama", "Muutma"};
@@ -121,9 +129,10 @@ public class Pank extends JFrame implements ActionListener {
                             parool = Integer.parseInt(failiSisu.get(i + 1));
 
                         }
-                    }if(kasParooliMuudeti) {
+                    }
+                    if (kasParooliMuudeti) {
                         JOptionPane.showMessageDialog(this, "Teie parool on: " + parool);
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(this, "Teie parool on: " + Login.getPasswordToHash());
 
                     }
@@ -139,7 +148,7 @@ public class Pank extends JFrame implements ActionListener {
                 }
             }
             if (option == JOptionPane.NO_OPTION) {//parooli muutmine
-                new parooliMuutmine(sisselogitu);
+                new ParooliMuutmine(sisselogitu);
                 dispose();
                 try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
                     String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

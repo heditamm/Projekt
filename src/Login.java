@@ -36,16 +36,9 @@ public class Login extends JFrame {
             String kliendiNimi = ajutineOsad[0];
             String parool = ajutineOsad[1];
             double summa = Double.parseDouble(ajutineOsad[2]);
-            String hash= ajutineOsad[3];
-
-            if (summa > 5000) {
-                Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, parool, hash);
-                kliendid.add(ajutine);
-            } else {
-                Klient ajutineTava = new Klient(kliendiNimi, summa, parool, hash);
-                kliendid.add(ajutineTava);
-            }
-
+            String hash = ajutineOsad[3];
+            Klient ajutineTava = new Klient(kliendiNimi, summa, parool, hash);
+            kliendid.add(ajutineTava);
         }
         return kliendid;
     }
@@ -54,7 +47,8 @@ public class Login extends JFrame {
     public Login(List<Klient> kliendid) {
         // Set window title
         setTitle("Login");
-
+        Color lightPink = new Color(255, 220, 220);
+        getContentPane().setBackground(lightPink);
         // Set default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -85,7 +79,7 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username = kasutajaTekst.getText();
-                 passwordToHash = String.valueOf(parooliTekst.getPassword());
+                passwordToHash = String.valueOf(parooliTekst.getPassword());
                 boolean olemasolu = false;
                 for (Klient klient : kliendid) {
                     if (klient.getKliendiNimi().equalsIgnoreCase(username)) {
@@ -94,16 +88,13 @@ public class Login extends JFrame {
                             String salt = klient.getParooliHash();
                             String regeneratedPassowrdToVerify =
                                     SHAExample.getSecurePassword(passwordToHash, salt);
-                            boolean matched=false;
+                            boolean matched = klient.getParool().equals(regeneratedPassowrdToVerify);
                             //kui on
-                            if(klient.getParool().equals(regeneratedPassowrdToVerify)) {
-                                 matched = true;
-                            }
                             if (matched) {
                                 sisselogitu = new Klient(klient.getKliendiNimi(), klient.getKontojääk(), klient.getParool(), klient.getParooliHash());
                                 JOptionPane.showMessageDialog(Login.this, "Sisselogimine õnnestus!");
 
-                                try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))){
+                                try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
                                     String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                                     bw.write("Kasutaja " + sisselogitu.getKliendiNimi() + " logis sisse. " + aeg + "\n");
                                 }
@@ -112,8 +103,6 @@ public class Login extends JFrame {
                                 olemasolu = true;
                                 new Pank(sisselogitu);
                                 dispose();
-                                //setVisible(false);
-                                //System.exit(0);
                             } else {
                                 JOptionPane.showMessageDialog(Login.this, "Vale parool. Proovige uuesti.");
                                 parooliTekst.setText("");
@@ -124,7 +113,7 @@ public class Login extends JFrame {
                         }
                     }
                 }
-                if (!olemasolu){
+                if (!olemasolu) {
                     JOptionPane.showMessageDialog(Login.this, "Sellist kasutajat ei eksisteeri! Proovige uuesti.");
                     kasutajaTekst.setText("");
                     parooliTekst.setText("");
