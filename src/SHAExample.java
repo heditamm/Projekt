@@ -4,10 +4,11 @@ import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 
 public class SHAExample
-{
+{   /*
     public static void main(String[] args)
             throws NoSuchAlgorithmException, NoSuchProviderException
     {
+
         String passwordToHash = "777";
         String salt = getSalt();
         System.out.println(salt);
@@ -20,8 +21,10 @@ public class SHAExample
                 getSecurePassword(passwordToHash, salt);
 
         System.out.println(regeneratedPassowrdToVerify);
-    }
 
+
+    }
+*/
     static String getSecurePassword(String passwordToHash,
                                     String salt) {
         String generatedPassword = null;

@@ -37,7 +37,7 @@ public class Pank extends JFrame implements ActionListener {
                      [Q] Lõpeta tegevus*/
 
         jääkNupp = new JButton("Kontojääki vaatama");
-        paroolNupp = new JButton("Parool");
+        paroolNupp = new JButton("Tegevused parooliga");
         sissemaksNupp = new JButton("Sissemaksu tegema");
         ülekandeNupp = new JButton("Ülekannet tegema");
         investNupp = new JButton("Investeerima");
@@ -102,6 +102,33 @@ public class Pank extends JFrame implements ActionListener {
         if (e.getSource()==ülekandeNupp){
             new Väljamakse(sisselogitu);
             dispose();
+        }
+        if (e.getSource()==paroolNupp){
+            boolean kasParooliMuudetud=false;
+            Object[] valikud = {"Vaatama", "Muutma"};
+            int option = JOptionPane.showOptionDialog(Pank.this, "Kas soovite parooli vaadata või muuta?", "Parooliga", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, valikud, valikud[1]);
+            if (option == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(this, "Teie parool on: "+ sisselogitu.getParool());
+
+                try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
+                    String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    bw.write(sisselogitu.getKliendiNimi() + " vaatas enda parooli. " + aeg +"\n");
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            } if (option == JOptionPane.NO_OPTION) {
+                new parooliMuutmine(sisselogitu);
+                dispose();
+
+                try(BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
+                    String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    bw.write(sisselogitu.getKliendiNimi() + " vahetas enda prooli. " + aeg +"\n");
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            }
         }
     }
 }

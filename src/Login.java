@@ -38,11 +38,10 @@ public class Login extends JFrame {
             String rida = sc.nextLine();
             String[] ajutineOsad = rida.split(", ");
 
-            int kontonumber = Integer.parseInt(ajutineOsad[0]);
-            String kliendiNimi = ajutineOsad[1];
-            String parool = ajutineOsad[2];
-            double summa = Double.parseDouble(ajutineOsad[3]);
-            String hash= ajutineOsad[4];
+            String kliendiNimi = ajutineOsad[0];
+            String parool = ajutineOsad[1];
+            double summa = Double.parseDouble(ajutineOsad[2]);
+            String hash= ajutineOsad[3];
 
             if (summa > 5000) {
                 Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, parool, hash);
@@ -92,15 +91,16 @@ public class Login extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String username = kasutajaTekst.getText();
                 String passwordToHash = String.valueOf(parooliTekst.getPassword());
-                System.out.println(passwordToHash);
                 boolean olemasolu = false;
                 for (Klient klient : kliendid) {
                     if (klient.getKliendiNimi().equalsIgnoreCase(username)) {
                         try {
+                            //proovib kas sisestatud parooli hash on sama failis olevaga
                             String salt = klient.getParooliHash();
                             String regeneratedPassowrdToVerify =
                                     SHAExample.getSecurePassword(passwordToHash, salt);
                             boolean matched=false;
+                            //kui on
                             if(klient.getParool().equals(regeneratedPassowrdToVerify)) {
                                  matched = true;
                             }
