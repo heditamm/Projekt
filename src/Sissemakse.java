@@ -8,8 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Integer.*;
-
 class Sissemakse extends JFrame implements ActionListener {
     private final String välja_fail = "tegevuste_logi.txt";
     private final Klient sisselogitu;
@@ -35,7 +33,7 @@ class Sissemakse extends JFrame implements ActionListener {
         edasiNupp = new JButton("Edasi");
         edasiNupp.addActionListener(this);
         tagasiNupp = new JButton("Tagasi");
-       tagasiNupp.addActionListener(this);
+        tagasiNupp.addActionListener(this);
 
         JPanel sissePanel = new JPanel();
         sissePanel.setLayout(new GridLayout(3, 1));
@@ -56,21 +54,21 @@ class Sissemakse extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == edasiNupp) {
             String summaTekstina = sisseField.getText();
-            Double summa=Double.parseDouble(summaTekstina);
+            double summa = Double.parseDouble(summaTekstina);
             try {
                 int integerPlaces = summaTekstina.indexOf('.');
                 int decimalPlaces = summaTekstina.length() - integerPlaces - 1;
                 //mõned errorid mis võivad tulla
-                if(decimalPlaces > 2 && integerPlaces != -1){
+                if (decimalPlaces > 2 && integerPlaces != -1) {
                     JOptionPane.showMessageDialog(this, "Summa saab olla kuni kaks komakohta");
                 } else if (summa <= 0) {
                     JOptionPane.showMessageDialog(this, "Summa ei saa olla väiksem või võrdne kui null");
-                }else {
+                } else {
                     vahetaSõna("src/Kasutajad.txt", String.valueOf(sisselogitu.getKontojääk()), String.valueOf(sisselogitu.getKontojääk() + summa));
                     sisselogitu.setKontojääk((sisselogitu.getKontojääk() + summa));
                     JOptionPane.showMessageDialog(this, "Sissemakse tehtud!");
                 }
-                } catch (IOException ex) {
+            } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
 
@@ -83,7 +81,8 @@ class Sissemakse extends JFrame implements ActionListener {
             setVisible(false);
             new Pank(sisselogitu);
             dispose();
-        }if (e.getSource() == tagasiNupp) {
+        }
+        if (e.getSource() == tagasiNupp) {
             setVisible(false);
             new Pank(sisselogitu);
             dispose();
@@ -101,8 +100,8 @@ class Sissemakse extends JFrame implements ActionListener {
         // Asenda kindel sõna
         for (int i = 0; i < failiSisu.size(); i++) {
             String modifiedLine2 = failiSisu.get(i);
-            String[] osad= modifiedLine2.split(",");
-            if(sisselogitu.getKliendiNimi().equals(osad[0])) {
+            String[] osad = modifiedLine2.split(",");
+            if (sisselogitu.getKliendiNimi().equals(osad[0])) {
                 String modifiedLine = failiSisu.get(i).replace(sõna, uus);
                 System.out.println(modifiedLine);
                 failiSisu.set(i, modifiedLine);

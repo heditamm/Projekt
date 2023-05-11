@@ -1,15 +1,215 @@
-Kasutaja Taavi Tamm logis sisse. 2023-05-11 07:41:32
-Taavi Tamm vaatas kontojääki. 2023-05-11 07:41:35
-Taavi Tamm vaatas enda parooli. 2023-05-11 07:41:37
-Taavi Tamm vahetas enda prooli. 2023-05-11 07:41:39
-Taavi Tamm muutis parooli 2023-05-11 07:41:42
-Taavi Tamm teostas sisssemakse summas: 5.0 EUR. 2023-05-11 07:41:46
-Taavi Tamm teostas ülekande summas: 5.0 EUR. inimesle al 2023-05-11 07:41:51
-Taavi Tamm investeeris 4.0 EUR. fondi Elukestev 2023-05-11 07:42:04
-Taavi Tamm logis välja. 2023-05-11 07:42:07
-Kasutaja Taavi Tamm logis sisse. 2023-05-11 07:47:14
-Kasutaja Taavi Tamm logis sisse. 2023-05-11 07:48:55
-Kasutaja Taavi Tamm logis sisse. 2023-05-11 07:49:35
-Taavi Tamm teostas ülekande summas: 5.32 EUR. inimesle hg 2023-05-11 07:53:26
-Kasutaja Taavi Tamm logis sisse. 2023-05-11 07:53:55
-Kasutaja Taavi Tamm logis sisse. 2023-05-11 07:54:21
+Kasutaja Taavi Tammlogis sisse.2023-05-09 21:06:09
+Taavi Tamm vaatas kontojääki.2023-05-09 21:06:12
+Taavi Tamm teostas sisssemakse summas: 100.0EUR. 2023-05-09 21:06:16
+Taavi Tamm vaatas kontojääki.2023-05-09 21:06:18
+Taavi Tamm teostas ülekande summas: 200.0EUR. Martale .2023-05-09 21:06:27
+Taavi Tamm vaatas kontojääki.2023-05-09 21:06:29
+Taavi Tamm teostas ülekande summas: 1000.0EUR. Kati Ainle .2023-05-09 21:06:39
+Taavi Tamm vaatas kontojääki.2023-05-09 21:06:43
+Kasutaja Taavi Tammlogis sisse.2023-05-09 21:07:43
+Taavi Tamm vaatas kontojääki.2023-05-09 21:07:46
+Taavi Tamm teostas sisssemakse summas: 1000.0EUR. 2023-05-09 21:07:51
+Taavi Tamm vaatas kontojääki.2023-05-09 21:08:02
+Taavi Tamm teostas ülekande summas: 200.0EUR. Kati Ainle .2023-05-09 21:08:13
+Kasutaja Taavi Tammlogis sisse.2023-05-09 21:10:21
+Taavi Tamm vaatas kontojääki.2023-05-09 21:10:24
+Taavi Tamm teostas sisssemakse summas: 100.0EUR. 2023-05-09 21:10:28
+Taavi Tamm logis välja. 2023-05-09 21:10:31
+Kasutaja Taavi Tammlogis sisse. 2023-05-09 21:13:22
+Taavi Tamm vaatas kontojääki. 2023-05-09 21:13:24
+Taavi Tamm teostas sisssemakse summas: 100.0 EUR. 2023-05-09 21:13:29
+Taavi Tamm logis välja. 2023-05-09 21:13:32
+Kasutaja Taavi Tammlogis sisse. 2023-05-09 21:14:51
+Taavi Tamm vaatas kontojääki. 2023-05-09 21:14:54
+Taavi Tamm teostas sisssemakse summas: 1000.0 EUR. 2023-05-09 21:14:59
+Taavi Tamm teostas sisssemakse summas: 1.0 EUR. 2023-05-09 21:15:02
+Taavi Tamm teostas ülekande summas: 400.0 EUR. inimesle AAA2023-05-09 21:15:16
+Taavi Tamm logis välja. 2023-05-09 21:15:19
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 11:01:11
+Taavi Tamm vaatas kontojääki. 2023-05-10 11:01:13
+Taavi Tamm teostas sisssemakse summas: 5.0 EUR. 2023-05-10 11:01:17
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 11:04:58
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:29:26
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:31:51
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:32:04
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:33:22
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:33:51
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 12:45:55
+Kasutaja Diana Saar logis sisse. 2023-05-10 12:47:04
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 13:15:16
+Taavi Tamm vaatas kontojääki. 2023-05-10 13:15:20
+Taavi Tamm teostas sisssemakse summas: 100.0 EUR. 2023-05-10 13:15:29
+Taavi Tamm teostas ülekande summas: 200.0 EUR. inimesle aaa2023-05-10 13:15:36
+Taavi Tamm logis välja. 2023-05-10 13:15:45
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 15:20:48
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:20:49
+Taavi Tamm muutis parooli 1541c2512e743ca7b21dd397229bb9a5
+Taavi Tamm logis välja. 2023-05-10 15:20:55
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 15:21:04
+Taavi Tamm vaatas enda parooli. 2023-05-10 15:21:06
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:21:07
+Taavi Tamm muutis parooli 515152e853aa159d8fe2702e76938f7b
+Taavi Tamm logis välja. 2023-05-10 15:21:13
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 15:42:56
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:42:57
+Taavi Tamm muutis parooli 123
+Taavi Tamm logis välja. 2023-05-10 15:43:03
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 15:44:06
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:44:07
+Taavi Tamm muutis parooli 123
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:44:18
+Taavi Tamm muutis parooli 124
+Taavi Tamm logis välja. 2023-05-10 15:44:24
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 15:45:22
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:45:24
+Taavi Tamm muutis parooli 123
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 15:45:42
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:45:44
+Taavi Tamm muutis parooli 111
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 15:48:20
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:48:22
+Taavi Tamm muutis parooli 124
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 15:50:11
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:50:14
+Taavi Tamm muutis parooli 124
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 15:50:38
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:50:42
+Taavi Tamm muutis parooli 123
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 15:51:38
+Taavi Tamm vahetas enda prooli. 2023-05-10 15:51:39
+Taavi Tamm muutis parooli 122
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:18:51
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:18:53
+Taavi Tamm muutis parooli 1541c2512e743ca7b21dd397229bb9a5
+Taavi Tamm logis välja. 2023-05-10 16:18:59
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:19:57
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:20:00
+Taavi Tamm muutis parooli f624bf5e202f3461835f2df722d86afd
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:20:22
+Taavi Tamm muutis parooli 0b1d7551206b4609d514dd08dc8a414d
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:22:33
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:22:36
+Taavi Tamm muutis parooli 1541c2512e743ca7b21dd397229bb9a5
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:24:25
+Taavi Tamm teostas sisssemakse summas: 1.0 EUR. 2023-05-10 16:24:29
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:24:31
+Taavi Tamm muutis parooli 515152e853aa159d8fe2702e76938f7b
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:24:48
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:24:50
+Taavi Tamm muutis parooli 1541c2512e743ca7b21dd397229bb9a5
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:26:56
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:26:58
+Taavi Tamm muutis parooli 515152e853aa159d8fe2702e76938f7b
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:27:21
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:27:22
+Taavi Tamm muutis parooli 1541c2512e743ca7b21dd397229bb9a5
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:30:19
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:30:21
+Taavi Tamm muutis parooli 515152e853aa159d8fe2702e76938f7b
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:31:36
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:31:38
+Taavi Tamm muutis parooli edef8016f4d938a741bd920b1fc6d0b2
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:32:29
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:32:31
+Taavi Tamm muutis parooli 515152e853aa159d8fe2702e76938f7b
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:32:57
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:32:58
+Taavi Tamm muutis parooli cd6dcd6811b903047a9d7006f93220eb
+Kasutaja Sander Puu logis sisse. 2023-05-10 16:37:39
+Sander Puu vaatas enda parooli. 2023-05-10 16:37:42
+Sander Puu vahetas enda prooli. 2023-05-10 16:37:43
+Sander Puu muutis parooli 3d9ab914b0715e4ce5ca2fa14f87dc8f
+Kasutaja Sander Puu logis sisse. 2023-05-10 16:38:23
+Sander Puu vahetas enda prooli. 2023-05-10 16:38:25
+Sander Puu muutis parooli a9978740c728a6b2f6b6a0d86343bb0c
+Sander Puu vahetas enda prooli. 2023-05-10 16:38:30
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:38:55
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:38:56
+Taavi Tamm muutis parooli 515152e853aa159d8fe2702e76938f7b
+Taavi Tamm vaatas enda parooli. 2023-05-10 16:39:04
+Taavi Tamm vaatas enda parooli. 2023-05-10 16:39:07
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:45:12
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:45:14
+Taavi Tamm muutis parooli 515152e853aa159d8fe2702e76938f7b
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:45:18
+Taavi Tamm muutis parooli 8421dc1a2ab5dc0171d28a6c2b08aec4
+Taavi Tamm logis välja. 2023-05-10 16:45:24
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:45:34
+Taavi Tamm vaatas enda parooli. 2023-05-10 16:45:40
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:46:23
+Taavi Tamm vaatas enda parooli. 2023-05-10 16:46:32
+Taavi Tamm vaatas enda parooli. 2023-05-10 16:47:02
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:47:03
+Taavi Tamm muutis parooli 515152e853aa159d8fe2702e76938f7b
+Taavi Tamm vaatas enda parooli. 2023-05-10 16:47:07
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:52:47
+Taavi Tamm vaatas enda parooli. 2023-05-10 16:52:50
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:52:51
+Taavi Tamm muutis parooli 8421dc1a2ab5dc0171d28a6c2b08aec4
+Taavi Tamm vaatas enda parooli. 2023-05-10 16:52:57
+Taavi Tamm vaatas enda parooli. 2023-05-10 16:53:01
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 16:55:41
+Taavi Tamm vaatas enda parooli. 2023-05-10 16:55:44
+Taavi Tamm vahetas enda prooli. 2023-05-10 16:55:46
+Taavi Tamm muutis parooli 515152e853aa159d8fe2702e76938f7b
+Taavi Tamm vaatas enda parooli. 2023-05-10 16:55:51
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 18:54:17
+Taavi Tamm vaatas enda parooli. 2023-05-10 18:54:24
+Taavi Tamm vahetas enda prooli. 2023-05-10 18:54:27
+Taavi Tamm muutis parooli 2023-05-10 18:54:33
+Taavi Tamm logis välja. 2023-05-10 18:54:36
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:00:34
+Taavi Tamm vahetas enda prooli. 2023-05-10 19:00:38
+Taavi Tamm muutis parooli 2023-05-10 19:00:43
+Taavi Tamm vahetas enda prooli. 2023-05-10 19:00:48
+Taavi Tamm muutis parooli 2023-05-10 19:00:52
+Taavi Tamm logis välja. 2023-05-10 19:00:55
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:04:16
+Taavi Tamm logis välja. 2023-05-10 19:04:26
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:28:50
+Taavi Tamm investeeris 100.0 EUR. fondi proov 2023-05-10 19:29:00
+Taavi Tamm logis välja. 2023-05-10 19:29:10
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:29:42
+Taavi Tamm investeeris 1.0 EUR. fondi Taavi 2023-05-10 19:29:55
+Taavi Tamm logis välja. 2023-05-10 19:30:00
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:30:10
+Taavi Tamm teostas sisssemakse summas: 100.0 EUR. 2023-05-10 19:30:15
+Taavi Tamm logis välja. 2023-05-10 19:30:18
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:34:16
+Taavi Tamm vaatas kontojääki. 2023-05-10 19:34:23
+Taavi Tamm investeeris 100.0 EUR. fondi Fond 10 2023-05-10 19:34:29
+Taavi Tamm vaatas kontojääki. 2023-05-10 19:34:37
+Taavi Tamm investeeris 100.0 EUR. fondi Kogumisfond 30 2023-05-10 19:34:45
+Taavi Tamm logis välja. 2023-05-10 19:34:48
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:35:20
+Taavi Tamm investeeris 10.0 EUR. fondi Taavi  2023-05-10 19:35:28
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:35:58
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:36:27
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:37:07
+Taavi Tamm investeeris 10.0 EUR. fondi Kogumisfond 30 2023-05-10 19:37:19
+Taavi Tamm logis välja. 2023-05-10 19:37:22
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:37:41
+Taavi Tamm investeeris 10.0 EUR. fondi Kogumisfond 100 2023-05-10 19:37:48
+Taavi Tamm vaatas kontojääki. 2023-05-10 19:37:51
+Taavi Tamm logis välja. 2023-05-10 19:37:54
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:43:53
+Taavi Tamm teostas sisssemakse summas: 100.0 EUR. 2023-05-10 19:43:56
+Taavi Tamm logis välja. 2023-05-10 19:43:58
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:48:03
+Taavi Tamm logis välja. 2023-05-10 19:48:09
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:51:17
+Taavi Tamm logis välja. 2023-05-10 19:51:21
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:52:14
+Taavi Tamm vaatas kontojääki. 2023-05-10 19:52:17
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:53:28
+Taavi Tamm vaatas kontojääki. 2023-05-10 19:53:31
+Kasutaja Taavi Tamm logis sisse. 2023-05-10 19:54:22
+Taavi Tamm logis välja. 2023-05-10 19:54:24
+Kasutaja Taavi Tamm logis sisse. 2023-05-11 10:09:47
+Taavi Tamm vaatas kontojääki. 2023-05-11 10:09:52
+Taavi Tamm teostas sisssemakse summas: 100.0 EUR. 2023-05-11 10:09:59
+Taavi Tamm vaatas kontojääki. 2023-05-11 10:10:01
+Taavi Tamm teostas ülekande summas: 200.0 EUR. inimesle test 2023-05-11 10:10:11
+Taavi Tamm vaatas kontojääki. 2023-05-11 10:10:15
+Taavi Tamm investeeris 100.0 EUR. fondi test 2023-05-11 10:10:30
+Taavi Tamm logis välja. 2023-05-11 10:10:33

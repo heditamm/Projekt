@@ -11,10 +11,10 @@ import java.time.format.DateTimeFormatter;
 public class Väljamakse extends JFrame implements ActionListener {
     private final String välja_fail = "tegevuste_logi.txt";
     private final Klient sisselogitu;
-    JTextField kelleleField;
-    JTextField paljuField;
-    JButton edasiNupp;
-    JButton tagasiNupp;
+    private JTextField kelleleField;
+    private JTextField paljuField;
+    private JButton edasiNupp;
+    private JButton tagasiNupp;
 
     public Väljamakse(Klient sisselogitu) {
         this.sisselogitu = sisselogitu;
@@ -63,7 +63,7 @@ public class Väljamakse extends JFrame implements ActionListener {
         if (e.getSource() == edasiNupp) {
             String inimene = kelleleField.getText();
             String summaTekstina = paljuField.getText();
-            Double summa = Double.parseDouble(summaTekstina);
+            double summa = Double.parseDouble(summaTekstina);
             try {
                 int integerPlaces = summaTekstina.indexOf('.');
                 int decimalPlaces = summaTekstina.length() - integerPlaces - 1;
@@ -86,8 +86,8 @@ public class Väljamakse extends JFrame implements ActionListener {
                         throw new RuntimeException(ex);
                     }
                 }
-            } catch (Exception exception) {
-                throw exception;
+            } catch (RuntimeException ex) {
+                throw new RuntimeException(ex);
             }
             setVisible(false);
             new Pank(sisselogitu);

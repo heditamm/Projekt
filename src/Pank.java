@@ -11,12 +11,12 @@ import java.util.List;
 public class Pank extends JFrame implements ActionListener {
     private final String välja_fail = "tegevuste_logi.txt";
     private final Klient sisselogitu;
-    JButton jääkNupp;
-    JButton paroolNupp;
-    JButton sissemaksNupp;
-    JButton ülekandeNupp;
-    JButton investNupp;
-    JButton logivälja;
+    private JButton jääkNupp;
+    private JButton paroolNupp;
+    private JButton sissemaksNupp;
+    private JButton ülekandeNupp;
+    private JButton investNupp;
+    private JButton logivälja;
 
     public Pank(Klient sisselogitu) {
         this.sisselogitu = sisselogitu;

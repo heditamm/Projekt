@@ -10,8 +10,8 @@ import java.time.format.DateTimeFormatter;
 
 public class Investeerimine extends JFrame implements ActionListener {
     private final String välja_fail = "tegevuste_logi.txt";
-    JTextField fondField;
-    JTextField paljuField;
+    private JTextField fondField;
+    private JTextField paljuField;
     private Klient sisselogitu;
     private JButton edasinupp;
 
