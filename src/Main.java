@@ -26,7 +26,6 @@ public class Main extends Login{
             String parool = ajutineOsad[1];
             double summa = Double.parseDouble(ajutineOsad[2]);
             String hash=ajutineOsad[3];
-
             if (summa > 5000) {
                 Kuldklient ajutine = new Kuldklient(kliendiNimi, summa, parool, hash);
                 kliendid.add(ajutine);
@@ -34,7 +33,6 @@ public class Main extends Login{
                 Klient ajutineTava = new Klient(kliendiNimi, summa, parool, hash);
                 kliendid.add(ajutineTava);
             }
-
         }
         return kliendid;
     }
@@ -43,12 +41,10 @@ public class Main extends Login{
         //failist kasutajad
         List<Klient> kliendid = loeFailist("src/Kasutajad.txt");
 
-
         System.out.println("Sisestage oma nimi: ");
         Scanner nimi = new Scanner(System.in);
         String sisestatudKasutajaNimi = nimi.nextLine();
         Tegevused tegevKlient = null;
-
 
         //loopina vaatab läbi, kas on sellise nimega klienti
        for (Klient klient : kliendid) {try {

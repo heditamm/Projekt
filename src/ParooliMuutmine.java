@@ -13,6 +13,7 @@ public class ParooliMuutmine extends JFrame implements ActionListener {
     private final String välja_fail = "tegevuste_logi.txt";
     JTextField uusParool;
     JButton edasiNupp;
+    JButton tagasiNupp;
     private Klient sisselogitu;
 
 
@@ -33,6 +34,8 @@ public class ParooliMuutmine extends JFrame implements ActionListener {
             }
         });
         edasiNupp = new JButton("Salvesta");
+        tagasiNupp = new JButton("Tagasi");
+        tagasiNupp.addActionListener(this);
         edasiNupp.addActionListener(this);
 
         JPanel väljaPanel = new JPanel();
@@ -41,7 +44,9 @@ public class ParooliMuutmine extends JFrame implements ActionListener {
         väljaPanel.add(kelleleLabel);
         väljaPanel.add(uusParool);
         väljaPanel.add(new JLabel());
+        väljaPanel.add(new JLabel());
         väljaPanel.add(edasiNupp);
+        väljaPanel.add(tagasiNupp);
 
         add(väljaPanel);
 
@@ -61,7 +66,7 @@ public class ParooliMuutmine extends JFrame implements ActionListener {
                 //uus parool hashiks
                 String salt = sisselogitu.getParooliHash();
                 String regeneratedPassowrdToVerify =
-                        SHAExample.getSecurePassword(uus, salt);
+                        parooliHash.getSecurePassword(uus, salt);
                 JOptionPane.showMessageDialog(this, "Parool muudetud!");
                 Object[] valikud = {"Jah", "Ei"};
                 int option = JOptionPane.showOptionDialog(this, "Kas soovite uut parooli vaadata?", "Uue parooli vaatamine", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, valikud, valikud[1]);
@@ -69,7 +74,6 @@ public class ParooliMuutmine extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(this, "Uus parool: " + uus);
                 }
                 dispose();
-
                 // muudan kahes failis proolid ära
                 //try catch väga koledad aga intellij ei jää mitte mingil muul moel rahule
                 try {
@@ -90,10 +94,14 @@ public class ParooliMuutmine extends JFrame implements ActionListener {
             setVisible(false);
             new Pank(sisselogitu);
             dispose();
+        }if (e.getSource() == tagasiNupp) {
+            setVisible(false);
+            new Pank(sisselogitu);
+            dispose();
         }
     }
 
-    public static void vahetaSõna(String failinimi, String sõna, String uus) throws IOException {
+    public void vahetaSõna(String failinimi, String sõna, String uus) throws IOException {
         List<String> failiSisu = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new FileReader(failinimi));
         String line;
@@ -103,8 +111,13 @@ public class ParooliMuutmine extends JFrame implements ActionListener {
         reader.close();
         // Asenda kindel sõna
         for (int i = 0; i < failiSisu.size(); i++) {
-            String modifiedLine = failiSisu.get(i).replace(sõna, uus);
-            failiSisu.set(i, modifiedLine);
+            String modifiedLine2 = failiSisu.get(i);
+            String[] osad= modifiedLine2.split(",");
+            //kindlal kliendil, sest paljudel võib sama parool olla
+            if(sisselogitu.getKliendiNimi().equals(osad[0])) {
+                String modifiedLine = failiSisu.get(i).replace(sõna, uus);
+                failiSisu.set(i, modifiedLine);
+            }
         }
         // Kirjuta muudetud sisu tagasi faili
         BufferedWriter writer = new BufferedWriter(new FileWriter(failinimi));

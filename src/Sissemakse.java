@@ -8,11 +8,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Integer.*;
+
 class Sissemakse extends JFrame implements ActionListener {
     private final String välja_fail = "tegevuste_logi.txt";
     private final Klient sisselogitu;
     private JTextField sisseField;
     private JButton edasiNupp;
+    private JButton tagasiNupp;
 
     public Sissemakse(Klient sisselogitu) {
         this.sisselogitu = sisselogitu;
@@ -31,15 +34,18 @@ class Sissemakse extends JFrame implements ActionListener {
         });
         edasiNupp = new JButton("Edasi");
         edasiNupp.addActionListener(this);
+        tagasiNupp = new JButton("Tagasi");
+       tagasiNupp.addActionListener(this);
 
         JPanel sissePanel = new JPanel();
-        sissePanel.setLayout(new GridLayout(2, 1));
-
+        sissePanel.setLayout(new GridLayout(3, 1));
 
         sissePanel.add(sisseLabel);
         sissePanel.add(sisseField);
         sissePanel.add(new JLabel());
+        sissePanel.add(new JLabel());
         sissePanel.add(edasiNupp);
+        sissePanel.add(tagasiNupp);
 
         add(sissePanel);
 
@@ -49,14 +55,24 @@ class Sissemakse extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == edasiNupp) {
-            double summa = Double.parseDouble(sisseField.getText());
+            String summaTekstina = sisseField.getText();
+            Double summa=Double.parseDouble(summaTekstina);
             try {
-                vahetaSõna("src/Kasutajad.txt", String.valueOf(sisselogitu.getKontojääk()), String.valueOf(sisselogitu.getKontojääk() + summa));
-            } catch (IOException ex) {
+                int integerPlaces = summaTekstina.indexOf('.');
+                int decimalPlaces = summaTekstina.length() - integerPlaces - 1;
+                //mõned errorid mis võivad tulla
+                if(decimalPlaces > 2 && integerPlaces != -1){
+                    JOptionPane.showMessageDialog(this, "Summa saab olla kuni kaks komakohta");
+                } else if (summa <= 0) {
+                    JOptionPane.showMessageDialog(this, "Summa ei saa olla väiksem või võrdne kui null");
+                }else {
+                    vahetaSõna("src/Kasutajad.txt", String.valueOf(sisselogitu.getKontojääk()), String.valueOf(sisselogitu.getKontojääk() + summa));
+                    sisselogitu.setKontojääk((sisselogitu.getKontojääk() + summa));
+                    JOptionPane.showMessageDialog(this, "Sissemakse tehtud!");
+                }
+                } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-            sisselogitu.setKontojääk((sisselogitu.getKontojääk() + summa));
-            JOptionPane.showMessageDialog(this, "Sissemakse tehtud!");
 
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
                 String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -67,10 +83,14 @@ class Sissemakse extends JFrame implements ActionListener {
             setVisible(false);
             new Pank(sisselogitu);
             dispose();
+        }if (e.getSource() == tagasiNupp) {
+            setVisible(false);
+            new Pank(sisselogitu);
+            dispose();
         }
     }
 
-    public static void vahetaSõna(String failinimi, String sõna, String uus) throws IOException {
+    public void vahetaSõna(String failinimi, String sõna, String uus) throws IOException {
         List<String> failiSisu = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new FileReader(failinimi));
         String line;
@@ -80,8 +100,13 @@ class Sissemakse extends JFrame implements ActionListener {
         reader.close();
         // Asenda kindel sõna
         for (int i = 0; i < failiSisu.size(); i++) {
-            String modifiedLine = failiSisu.get(i).replace(sõna, uus);
-            failiSisu.set(i, modifiedLine);
+            String modifiedLine2 = failiSisu.get(i);
+            String[] osad= modifiedLine2.split(",");
+            if(sisselogitu.getKliendiNimi().equals(osad[0])) {
+                String modifiedLine = failiSisu.get(i).replace(sõna, uus);
+                System.out.println(modifiedLine);
+                failiSisu.set(i, modifiedLine);
+            }
         }
         // Kirjuta muudetud sisu tagasi faili
         BufferedWriter writer = new BufferedWriter(new FileWriter(failinimi));

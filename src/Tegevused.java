@@ -28,11 +28,6 @@ public class Tegevused {
         return "Teie konto jääk on: " + klient.getKontojääk() + " EUR.";
     }
 
-    // [p] vaata parooli
-    String vaataParooli() {//saad vaadata oma parooli
-        return "Teie konto parool on: " + parool;
-    }
-
     boolean piisavSumma(double kogus) {//kontrollib, kas on piisavalt raha, et tegevust teha (korduvate kontojääk-kogus<0 asemel saab seda kasutada, ei ole igalepoole seda veel pannud)
         return !((klient.getKontojääk() - kogus) < 0);
     }

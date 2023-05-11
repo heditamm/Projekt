@@ -43,7 +43,6 @@ public class Login extends JFrame {
         return kliendid;
     }
 
-
     public Login(List<Klient> kliendid) {
         // Set window title
         setTitle("Login");
@@ -87,7 +86,7 @@ public class Login extends JFrame {
                             //proovib kas sisestatud parooli hash on sama failis olevaga
                             String salt = klient.getParooliHash();
                             String regeneratedPassowrdToVerify =
-                                    SHAExample.getSecurePassword(passwordToHash, salt);
+                                    parooliHash.getSecurePassword(passwordToHash, salt);
                             boolean matched = klient.getParool().equals(regeneratedPassowrdToVerify);
                             //kui on
                             if (matched) {

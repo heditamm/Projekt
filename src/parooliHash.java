@@ -3,30 +3,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 
-public class SHAExample
-{   /*
-    public static void main(String[] args)
-            throws NoSuchAlgorithmException, NoSuchProviderException
-    {
-
-        String passwordToHash = "777";
-        String salt = getSalt();
-        System.out.println(salt);
-
-        String securePassword = getSecurePassword(passwordToHash, salt);
-
-        System.out.println(securePassword);
-
-        String regeneratedPassowrdToVerify =
-                getSecurePassword(passwordToHash, salt);
-
-        System.out.println(regeneratedPassowrdToVerify);
-
-
-    }
-*/
-    static String getSecurePassword(String passwordToHash,
-                                    String salt) {
+public class parooliHash {
+    static String getSecurePassword(String passwordToHash, String salt) {
         String generatedPassword = null;
         try {
             // Create MessageDigest instance for MD5
@@ -43,10 +21,8 @@ public class SHAExample
             StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16)
-                        .substring(1));
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
             }
-
             // Get complete hashed password in hex format
             generatedPassword = sb.toString();
         } catch (NoSuchAlgorithmException e) {
@@ -56,18 +32,15 @@ public class SHAExample
     }
 
     // Add salt
-    static String getSalt()
-            throws NoSuchAlgorithmException, NoSuchProviderException
-    {
+    static String getSalt() throws NoSuchAlgorithmException, NoSuchProviderException {
         // Always use a SecureRandom generator
         SecureRandom sr = SecureRandom.getInstance("SHA1PRNG", "SUN");
-
         // Create array for salt
         byte[] salt = new byte[16];
 
         // Get a random salt
         sr.nextBytes(salt);
-       // System.out.println(salt.toString());
+        // System.out.println(salt.toString());
         // return salt
         return salt.toString();
     }

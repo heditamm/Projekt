@@ -35,10 +35,6 @@ public class Klient {
         return parooliHash;
     }
 
-    public void setParooliHash(String parooliHash) {
-        this.parooliHash = parooliHash;
-    }
-
     String tase() {
         return "Tavakasutaja";
     }

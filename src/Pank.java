@@ -108,7 +108,6 @@ public class Pank extends JFrame implements ActionListener {
                 new InvesteerimineEbakindel(sisselogitu, fond);
                 dispose();
             }
-
         }
         boolean kasParooliMuudeti = false;
         int parool = 0;
@@ -127,19 +126,17 @@ public class Pank extends JFrame implements ActionListener {
                     for (int i = 0; i < failiSisu.size(); i++) {
                         if (failiSisu.get(i) == sisselogitu.getKliendiNimi()) {
                             parool = Integer.parseInt(failiSisu.get(i + 1));
-
                         }
                     }
                     if (kasParooliMuudeti) {
                         JOptionPane.showMessageDialog(this, "Teie parool on: " + parool);
                     } else {
                         JOptionPane.showMessageDialog(this, "Teie parool on: " + Login.getPasswordToHash());
-
                     }
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                //parooli vaatamine
+                //parooli vaatamise logi
                 try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
                     String aeg = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                     bw.write(sisselogitu.getKliendiNimi() + " vaatas enda parooli. " + aeg + "\n");
@@ -147,7 +144,7 @@ public class Pank extends JFrame implements ActionListener {
                     throw new RuntimeException(ex);
                 }
             }
-            if (option == JOptionPane.NO_OPTION) {//parooli muutmine
+            if (option == JOptionPane.NO_OPTION) {//parooli muutmise logi
                 new ParooliMuutmine(sisselogitu);
                 dispose();
                 try (BufferedWriter bw = new BufferedWriter(new FileWriter(välja_fail, true))) {
